@@ -29,7 +29,7 @@ ga:
 
 # disqus 设置
 disqus:
-  shortname: richey
+  shortname: painterlin
 
 # 主题设置，自动激活某个标签
 active: 读书
