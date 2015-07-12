@@ -24,8 +24,8 @@ favicon: /public/img/deer3.png
 
 # google analytics 设置
 ga:
-  id: UA-54262064-1 
-  url: painterlin.com
+  id: 
+  url: 
 
 # disqus 设置
 disqus:
