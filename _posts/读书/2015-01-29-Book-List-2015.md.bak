@@ -4,14 +4,6 @@ title: 2015年阅读书单
 category: 读书
 keywords: 阅读,书单,2015
 books: 
-    - title: Java Web整合开发王者归来
-      status: 在读
-      author: 刘京华  
-      publisher: 清华大学
-      language: 中文
-      link: http://book.douban.com/subject/4189495/
-      cover: http://img4.douban.com/lpic/s6106647.jpg
-      description:内容不深入，面面俱到。
     - title: spring实战
       status: 已读
       author: 沃尔斯 (Craig Walls) 
@@ -28,6 +20,14 @@ books:
       link: http://book.douban.com/subject/5910656/
       cover: http://img4.douban.com/lpic/s4594868.jpg
       description: 我甚至现在就能清楚地看见，一旦有一天我不得不长久地离开它，我会怎样想念它，我会怎样想念它并且梦见它，我会怎样因为不敢想念它而梦也梦不到它。宇宙以其不息的欲望将一个歌舞炼为永恒。这欲望有怎样一个人间的姓名，大可忽略不计。每个人的地坛都不一样吧，到最后，也不是我在地坛，而是地坛在我。
+  - title: java并发编程
+      status: 已读
+      author: Brian Goetz等
+      publisher: 机械工业出版社华章公司
+      language: 中文
+      link: http://book.douban.com/subject/10484692/
+      cover: http://img3.douban.com/lpic/s7663093.jpg
+      description: 经典的好书，反复看了几次都没看完，因为看到后面就走火入魔了，待内力深厚些再战吧！
 ---
 
 
