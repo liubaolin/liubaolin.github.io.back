@@ -13,7 +13,7 @@ books:
       cover: http://img3.douban.com/lpic/s27260565.jpg
       description: 比较实战的一本书吧，原理性的东西涉及的较少，整体不失为一本好书
     - title: java并发编程
-      status: 已读
+      status: 读到走火入魔（择机再看）
       author: Brian Goetz/Tim Peierls/Joshua Bloch/Joseph Bowbeer/David Holmes/Doug Lea
       publisher: 机械工业出版社华章公司
       language: 中文
@@ -29,7 +29,7 @@ books:
       cover: http://img4.douban.com/lpic/s6110297.jpg
       description:入门好书，Hibernate的思想是不变的，只是技术更新太快，比如本书不涉及Anotation。
     - title: Java Web整合开发王者归来
-      status: 在读
+      status: 当字典用
       author: 刘京华  
       publisher: 清华大学
       language: 中文
