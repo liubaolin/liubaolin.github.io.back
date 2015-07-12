@@ -5,7 +5,7 @@ category: 技术
 tags: Hibernate
 keywords: Hibernate、增删改查
 description: 
-    ---
+---
     ###导包
     import java.sql.SQLException;
     import org.hibernate.HibernateException;
@@ -14,6 +14,7 @@ description:
     import org.springframework.orm.hibernate3.HibernateTemplate;
     import com.mankeep.mm.common.dao.spring.HibernateGenericDao;
     import com.mankeep.mm.core.entity.Company;
+    
     
     ###注释
      * @author lin
