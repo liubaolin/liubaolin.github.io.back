@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Hibernate和Spring对Session的管理
+title: Hibernate对Session的管理
 category: 技术
 tags: Hibernate
 keywords: Hibernate、Spring、Session
