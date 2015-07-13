@@ -16,15 +16,15 @@ description:
     import com.mankeep.mm.core.entity.Company;
     
     
-    ###注释
+    
      * @author lin
-     * 
-    ######注意1：
+####注意：
+
      * Company实体类的主键生成方式是AUTO（自增长型），是由hibernate根据底层数据库自动选择，对于oracle来说，会由hibernate来维护主键
      * @GeneratedValue(strategy=GenerationType.AUTO) 相当于 XML配置文件中的native方式
      * 如果实体类的主键生成策略使用该种方式的话，调用save（）方法保存对象的时候，会立即发送一条insert语句，并缓在session中缓存该对象
      * 
-    ######注意2：
+####注意： 
      * hibernatetemplate自身封装了事务，
      * hibernatetemplate就是一个模板，把我们之前的用session时开启事务，提交事务的操作都封装在一块了
      * 如果不存在事务，每次执行HibernateTemplate方法都会取得新Session，执行完数据库操作后再关闭Session。
@@ -40,30 +40,30 @@ description:
      * 		而如果你用Spring的配置文件来配置数据源，Sping默认是自动提交的，
      * 		如果你想把Spring设置为手动提交你可以在起配置文件中进行配置：
      *
-    <property name="defaultAutoCommit"&gt;
-    &lt;false&gt;
-    &lt;/property&gt;
+    <property name="defaultAutoCommit"
+   		 false
+    </property>;
       
-    ######session的缓存
-     * 		session的接口实现中包含一系列的java集合，这些集合构成了session的缓存
+####session的缓存:
+     * 	session的接口实现中包含一系列的java集合，这些集合构成了session的缓存
      * 	所以session的缓存中存的实际上是java对象的句柄（引用），这些在session中存在引用的Java对象就是持久化对象
-     * 		这也就解释了为什么一个临时对象如果被持久化对象引用，那么这个对象就会变成持久化对象（在允许级联保存的情况下，session情况缓存的时候会把该临时对象转变为持久化对象）
-     * 		只有在清空缓存的时候，这些引用才会被清空，这实现了对象从持久化状态到其它状态的转变
+     * 	这也就解释了为什么一个临时对象如果被持久化对象引用，那么这个对象就会变成持久化对象（在允许级联保存的情况下，session情况缓存的时候会把该临时对象转变为持久化对象）
+     * 	只有在清空缓存的时候，这些引用才会被清空，这实现了对象从持久化状态到其它状态的转变
      * 
-    ######脏对象
-     * 		当一个持久化对象的属性与数据库中的属性不一致时，该对象就被称为脏对象
+####脏对象:
+     * 	当一个持久化对象的属性与数据库中的属性不一致时，该对象就被称为脏对象
      * 		
      * 如何判断脏对象
-     * 		当一个实体对象被加载到session中时，Session回为这个实体对象的属性赋值一份快照
-     * 		在清理session缓存时，会将实体对象与之前的快照进行对比检查（脏检查）
-     * 		如果发现有属性不一致，则执行update语句，同步更新数据库
+     * 当一个实体对象被加载到session中时，Session回为这个实体对象的属性赋值一份快照
+     * 在清理session缓存时，会将实体对象与之前的快照进行对比检查（脏检查）
+     * 如果发现有属性不一致，则执行update语句，同步更新数据库
      * 
-    ######session的缓存何时被清空
+####session的缓存何时被清空:
      * 		1、事务提交的时候
      * 		2、在查询前，对象的属性发生了改变（脏对象），则会清空session（同步持久化对象）
      * 		3、手动flush的时候
     
-    
+####代码：
     
     	public class HibernateTestDao extends HibernateGenericDao{
     
