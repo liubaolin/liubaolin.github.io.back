@@ -1,0 +1,184 @@
+---
+layout: post
+title: JNDI01-快速入门
+category: 技术
+tags: jndi
+keywords: jndi
+description: 
+---
+####JNDI简介&简单示例 
+    JNDI: The Java Naming and Directory Interface
+ 
+####什么是JNDI？
+* The Java Naming and Directory Interface是访问不同名字和目录服务的统一API接口。
+不同的服务使用不同的名字格式。
+Java程序需要以相同的格式访问数据库，文件，目录，对象和网络。
+ 
+* JNID有两部分接口：应用程序接口和提供服务的接口。在应用程序中使用API来访问名字或目录服务，在一个新的服务中使用SPI来提供服务。
+ 
+####JNDI结构
+* 名字服务（Naming Services）
+名字服务提供一种方法，映射标识符到实体或对象。
+####你需要知道的几条基本条款：
+* 绑定：绑定是将一个不可分割的名字（"原子"名字）与一个对象联系起来。像DNS，我们用名字www.yahoo.com与IP地址216.32.74.53联系起来，一个文件对象用文件名afile.txt联系起来。
+* 名字空间；名字空间包含一组名字，但名字空间内每个名字是唯一的。一个文件目录就是一个简单的名字空间，如目录C:\temp，在这个目录下，不能有两个相同名字的文件，但是，不同目录下的两个文件可能有相同的名字。
+* 复合名字：复合名字是用名字空间构成的唯一名字，有一个或多个"原子"名字构成，取决于所在的名字空间。文件路径就是一个复合名字，比如我们用C:\temp\myfile.txt，我们可以看到，这个名字由根目录名（C:\），临时目录名（temp）和一个文件名（myfile.txt）构成，这3个名字复合起来表示一个唯一的名字。
+* 组合名字：组合名字能跨越多个名字空间。一个URL就是一个组合名字，如果你看见http://www.npu.edu/index.htm，你使用http服务连接到服务器，然后使用另一个名字空间/index.htm来访问一个文件。
+ 
+####目录服务
+目录服务提供一组分成等级的目录对象，具有可搜索的能力。
+在目录服务中存储的对象可以是任何能用一组属性描述的对象，每个对象都可通过一组属性来描述该对象的能力。例如，一个Person对象可能有height，hair color，age，sex等属性。目录服务还可提供根据要求来搜索的能力，如我们可以使用Person的age属性，搜索20-25岁间的Person对象，目录服务将返回符合条件的Persion对象。这通常被称作基于内容的搜索。
+ 
+####在客户端使用JNDI：
+* 创建一个java.util.Hashtable或者java.util.Properties的实例。
+* 添加变量到Hashtable或Properties对象：
+由naming server提供的JNDI class类名。
+包含aming server位置的URL。
+安全信任书。
+* 通过Hashtable或Properites或jndi属性文件创建一个InitialContext对象。
+
+		示例：
+		import java.util.*;
+		import javax.naming.*;
+		...
+		env.put(Context.INITIAL_CONTEXT_FACTORY, "weblogic.jndi.WLInitialContextFactory");
+		env.put(Context.PROVIDER_URL,"t3://localhost:7001");
+		InitialContext ctx = new InitialContext(env);
+
+
+<table  border=”1″ cellspacing="0">
+<tr>
+<th>环境变量</th>
+<th>相应的常量</th>
+<th>说明</th>
+</tr>
+<tr>
+<td>java.naming.factory.initial</td>
+<td>Context.INITIAL_CONTEXT_FACTORY</td>
+<td>Context Factory 类名，由服务提供商给出。</td>
+</tr>
+<tr>
+<td>java.naming.provider.url</td>
+<td>Context.PROVIDE_URL</td>
+<td>初始化地址。</td>
+</tr>
+<tr>
+<td>java.naming.security.
+principal</td>
+<td>Context.SECURITY_PRINCIPAL</td>
+<td>服务使用者信息。</td>
+</tr>
+<tr>
+<td>java.naming.security.
+credentials </td>
+<td>Context.SECURITY_CREDENTIAL</td>
+<td>口令。</td>
+</tr>
+</table>	
+ 
+	 
+
+	更多的配置示例：
+	Hashtable env = new Hashtable();
+	env.put (Context.INITIAL_CONTEXT_FACTORY, 
+	"weblogic.jndi.WLInitialContextFactory");
+	env.put(Context.PROVIDER_URL, "t3://localhost:7001");
+	env.put(Context.SECURITY_PRINCIPAL, "system");
+	env.put(Context.SECURITY_CREDENTIALS, "password here");
+	 （只有要以特定用户登录时才需要用户名和密码）
+	Properties env = new Properties();
+	env.setProperties ("java.naming.factory.initial", 
+	"weblogic.jndi.WLInitialContextFactory");
+	env.setProperties("java.naming.provider.url" , "t3://localhost:7001");
+	env.setProperties("java.naming.security.principal" , "tommy");
+	env.setProperties("java.naming.security.credentials" ,"password here");
+	 
+	创建InitialContext：
+	Class Name: javax.naming.InitialContext
+	Interfaces that it implements: javax.naming.Context
+	Constructors:
+	    public InitialContext();
+	    public InitialContext(Hashtable configuration);
+	    public InitialContext(Properties configuration);
+	 
+	以上所有方法都可能抛出NamingException。
+	 
+	一个Binding示例：
+	public static InitialContext getInitialContext() throws NamingException {
+	    Hashtable env = new Hashtable();
+	    env.put(Context.INITIAL_CONTEXT_FACTORY,
+	         "weblogic.jndi.WLInitialContextFactory");
+	    env.put(Context.PROVIDER_URL,"t3://localhost:7001");
+	    InitialContext context = new InitialContext(env);
+	    return context;
+	}
+	//Obtain the initial context
+	InitialContext initialContext = getInitialContext();
+	//Create a Bank object.
+	Bank myBank = new Bank();
+	//Bind the object into the JNDI tree.
+	initialContext.rebind("theBank",myBank);//把对象同一个已存在的名称重新绑定，当有重名的时候rebind（）不会出现异常，而bind（）会出现异常。
+	 
+	一个Lookup示例：
+	public static InitialContext getInitialContext() throws NamingException {
+	    Hashtable env = new Hashtable();
+	    env.put(Context.INITIAL_CONTEXT_FACTORY,
+	         "weblogic.jndi.WLInitialContextFactory");
+	    env.put(Context.PROVIDER_URL,"t3://localhost:7001");
+	    InitialContext context = new InitialContext(env);
+	    return context;
+	}
+	//Obtain the initial context
+	InitialContext initialContext = getInitialContext();
+	//Lookup an existing Bank object.
+	Bank myBank = (Bank) initialContext.lookup("theBank");
+	 
+	可能发生的NamingException：
+	AuthenticationException
+	CommunicationException
+	InvalidNameException
+	NameNotFoundException
+	NoInitialContextException
+	 
+	枚举所有名字对象：
+	NamingEnumeration Declaration:
+	public interface NamingEnumeration extends Enumeration {
+	    public boolean hashMore() throws NamingException;
+	    public Object next() throws NamingException;
+	    public void close() throws NamingException; //jndi 1.2
+	}
+	 
+	try {
+	    …
+	    NamingEnumeration enum = ctx.list("");
+	    while (enum.hasMore()) {
+	        NameClassPair ncp = (NameClassPair) enum.next();
+	        System.out.println("JNDI name is:" + ncp.getName());
+	    }
+	}
+	catch (NamingException e) {…}
+	 
+	最后的示例：
+	import java.util.*;
+	import javax.naming.*;
+	import javax.naming.directory.*;
+	import java.io.*;
+	public class ListAll {
+	    public static void main(java.lang.String[] args) {
+	        Hashtable env = new Hashtable();
+	        env.put(Context.INITIAL_CONTEXT_FACTORY,
+	            "weblogic.jndi.WLInitialContextFactory");
+	        env.put(Context.PROVIDER_URL, "t3://localhost:7001");
+	        try {
+	            InitialContext ctx = new InitialContext(env);
+	            NamingEnumeration enum = ctx.listBindings("");
+	            while(enum.hasMore()) {
+	                Binding binding = (Binding) enum.next();
+	                Object obj = (Object) binding.getObject();
+	                System.out.println(obj);
+	            }
+	        } catch (NamingException e) {
+	        System.out.println(e);
+	        }
+	    } // end main
+	} // end List
