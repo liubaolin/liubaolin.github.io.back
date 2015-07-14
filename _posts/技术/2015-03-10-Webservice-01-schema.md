@@ -1,13 +1,12 @@
 
 ---
 layout: post
-title: webservice_01_schema约束
+title: WebService_01_schema
 category: 技术
 tags: WebService
-keywords: schema规范
+keywords: schema
 description: 
 ---
-
 ###Schema规范
 1. 所有的标签和属性都要有schema文件来约束
 2. 所有的schema文件都要有一个namespace（可以理解为它的id）
