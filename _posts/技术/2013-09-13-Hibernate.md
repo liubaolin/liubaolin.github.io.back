@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Hibernate增删改查
+title: Hibernate01_增删改查
 category: 技术
 tags: Hibernate
 keywords: Hibernate、增删改查
