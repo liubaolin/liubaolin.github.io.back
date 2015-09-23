@@ -40,5 +40,4 @@ description:
 
 ###Web Services的开发模式
 
-目前Web Services的开发有两种模式：一种是代码优先的开发模式(Contract Last);另一种是契约优先的开发模式（Contract First)。	
 
