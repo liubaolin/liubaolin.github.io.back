@@ -39,7 +39,7 @@ description:
 　　SoapMessage.getSoapBody()及设置消息动作SoapMessage.setSoapAction (String soapAction)等，如果只是想获取消息中的Source/Result，在代码中尽量使用WebServiceMessage 接口，避免与具体的协议（MIME、SOAP）产生依赖。
 
  
-![15041902](/public/img/tec/xml-transform-2.jpg)
+![15041902](/public/img/tec/xml-transform-2.png)
 
 ###SaajSoapMessageFactory
 
@@ -48,7 +48,7 @@ description:
 
 　　SaajSoapMessageFactory 是Spring-WS 提供的一个基于SAAJ 消息工厂类，它实现自WebServiceMessageFactory 消息工厂接口，使用带附件的SOAP API（SAAJ）来创建SoapMessage。SAAJ（(SOAP with Attachments API for JAVA)） 是在松散耦合软件系统中利用SOAP 协议实现的基于XML 消息传递的API 规范，是Java EE 1.4 规范的一部分，所以它需要在一些高级的应用服务器下才能运行，表B-2 列出了一个常见的应用服务器支持的SAAJ 版本。
 
-![15041902](/public/img/tec/xml-transform-3.jpg)
+![15041902](/public/img/tec/xml-transform-3.png)
 
 　　Java SE 6 已经包括SAAJ 的1.3 版本，实例化一个SaajSoapMessageFactory 简单，只要在Spring 上下文中配置一个SaajSoapMessageFactory 的Bean 即可。
 
@@ -112,5 +112,5 @@ description:
 　　Spring-WS 需要使用到大量第三方依赖类库，了解不同场合需要使用哪些依赖类库会给具体的应用
 开发带来帮助，表B-3 对这些类库进行了说明。
 
-![15041902](/public/img/tec/xml-transform-4.jpg)
+![15041902](/public/img/tec/xml-transform-4.png)
 
