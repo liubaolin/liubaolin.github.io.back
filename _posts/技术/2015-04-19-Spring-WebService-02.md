@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Spring-WS-02体系及重要API
+title: Spring-WS-02体系重要API及类库说明
 category: 技术
 tags: Spring-Webservice
 keywords: Spring-WS API
@@ -24,7 +24,7 @@ description:
 　　其中javax.xml.transform.Source及javax.xml.transform.Result表示XML的一组输入输出接口，对于不同的XML解析模型都有相应的实现类。	如下图所示：
 	
 
-![150419](/public/img/tec/xml-transform.jpg)
+![15041901](/public/img/tec/xml-transform.jpg)
    
 	◆ 将整个消息写到输出流
 		 void	writeTo(OutputStream outputStream) 
@@ -34,10 +34,83 @@ description:
 	org.springframework.ws.soap 
 	Interface SoapMessage
 
-　　SoapMessage是Spring-WS中的另一个核心接口，代表一个机遇SOAP协议的XML消息。它扩展字MimeMessage接口，MimeMessage接口又扩展自WebServiceMessage接口。MimeMessage提供了多用途网际邮件扩展协议（MIME）操作接口方法，如添加消息附件 MimeMessage.addAttachment()及访问消息附件MimeMessage.getAttachment()。SoapMessage提供了SOAP操作接口方法
+　　SoapMessage是Spring-WS中的另一个核心接口，代表一个基于SOAP协议的XML消息。它扩展字MimeMessage接口，MimeMessage接口又扩展自WebServiceMessage接口。MimeMessage提供了多用途网际邮件扩展协议（MIME）操作接口方法，如添加消息附件 MimeMessage.addAttachment()及访问消息附件MimeMessage.getAttachment()。SoapMessage提供了SOAP操作接口方法，如
+　　获取SOAP 头信息SoapMessage. getSoapHeader()、获取SOAP 消息体信息
+　　SoapMessage.getSoapBody()及设置消息动作SoapMessage.setSoapAction (String soapAction)等，如果只是想获取消息中的Source/Result，在代码中尽量使用WebServiceMessage 接口，避免与具体的协议（MIME、SOAP）产生依赖。
 
+ 
+![15041902](/public/img/tec/xml-transform-2.jpg)
 
+###SaajSoapMessageFactory
 
-###Web Services的开发模式
+	org.springframework.ws.soap.saaj 
+	Class SaajSoapMessageFactory
 
+　　SaajSoapMessageFactory 是Spring-WS 提供的一个基于SAAJ 消息工厂类，它实现自WebServiceMessageFactory 消息工厂接口，使用带附件的SOAP API（SAAJ）来创建SoapMessage。SAAJ（(SOAP with Attachments API for JAVA)） 是在松散耦合软件系统中利用SOAP 协议实现的基于XML 消息传递的API 规范，是Java EE 1.4 规范的一部分，所以它需要在一些高级的应用服务器下才能运行，表B-2 列出了一个常见的应用服务器支持的SAAJ 版本。
+
+![15041902](/public/img/tec/xml-transform-3.jpg)
+
+　　Java SE 6 已经包括SAAJ 的1.3 版本，实例化一个SaajSoapMessageFactory 简单，只要在Spring 上下文中配置一个SaajSoapMessageFactory 的Bean 即可。
+
+　　使用SaajSoapMessageFactory 如下：
+
+	<bean id="messageFactory"
+		class="org.springframework.ws.soap.saaj.SaajSoapMessageFactory" />
+　　SAAJ 基于文档对象模型（DOM），所以它会把整个SOAP 消息全部读入到内存中，对于一些比较大的SOAP 消息，会对性能产生一定的负面影响，如果在对性能要求比较高的场合，推荐使用AxiomSoapMessageFactory 这个消息工厂类，下文将对其进行介绍。
+
+###AxiomSoapMessageFactory
+
+	org.springframework.ws.soap.axiom 
+	Class AxiomSoapMessageFactory
+
+　　AxiomSoapMessageFactory 是Spring-WS 提供的另一个基于AXIs 的消息工厂类，它也是实现自WebServiceMessageFactory 消息工厂接口，使用新一代的SOAP 引擎（Axis 2）来创建SoapMessage，AXIs 对象模型 （AXIOM）是一个XML 对象模型，设计用于提高 XML 处理期间的内存使用率和性能，基于Pull 解析。通过使用Streaming API for　XML (StAX) Pull 解析器，AXIOM（也称为 OM）可以控制解析过程，以提供延迟构建支持。
+
+　　为了提高AxiomSoapMessageFactory 读取SOAP 消息的性能 ， 你可以把payloadCaching 属性值设置为false（默认为true），让其直接从Socket 中读取SOAP 消息。需要注意的是，如果设置payloadCaching 为false，只能向前读取SOAP 消息内容，读取过的信息内容无法再次读取，因此在读取SOAP 消息内容的过程中，要防止其他程序去读取SOAP 消息，如日志记录等。
+
+　　使用AxiomSoapMessageFactory 如下：
+
+	<bean id="messageFactory"
+		class="org.springframework.ws.soap.axiom.AxiomSoapMessageFactory">
+		<protperty name="payloadCaching" value="false"/>
+	</ bean >
+
+　　AXIOM 可以通过StreamingWebServiceMessage 读取完整的流消息，可直接把消息流设置在响应消息中，而不需要写入到一个文档对象模型树或缓冲区。
+
+###MessageContext
+
+	org.springframework.ws.context 
+	Interface MessageContext
+
+　　MessageContext 由两个部分组成：请求和响应（requeset 和response），它代表C/S 的
+一组Q&A，也就是说每一次请求都会新建这样一个对象来持有当前会话中的一组Q&A。实际上，在客户瑞向服务端发送SOAP 消息请求时，所传递的对象（request）就是一个MessageContext 对象，直到服务端点处理这个对象，才会将response 注入到MessageContext中。
+
+###WebServiceConnection
+
+	org.springframework.ws.transport 
+	Interface WebServiceConnection
+
+　　WebServiceConnection 是Spring-WS 提供的一个Web 服务连接口，对不同的传输协议都有相应的实现类，如HTTP、JMS、MAIL 等传输协议对应的实现类：HttpUrlConnection、HttpServletConnection 、MailSenderConnection 、MailReceiverConnection 、JmsSender 、Connection、JmsReceiverConnection。每种传输协议都对应一个发送与接收的实现类，除了基于HTTP 传输协议的实现类外，我们通过名称就能很容易地区分它们的功能，其中HttpUrlConnection 表示用于创建发送请求Web 服务连接，HttpServletConnection 表示用于创建接收请求Web 服务连接。WebServiceConnection 表示客户端向服务端发送一个Web服务消息的点到点的连接，它包括两个动作：接收从客户端发来的消息和发送给客户端响应消息。
+
+###TransportContext
+
+	org.springframework.ws.transport 
+	Interface TransportConstants
+
+　　传输协议上下文，它关联一个Web 服务连接口WebServiceConnection，可以通过TransportContextHolder 拿到本地线程（ThreadLocal）的传输协议上下文，从而获得WebServiceConnection 中的一些信息，如基于HTTP 传输协议，可以获取HttpServletRequest：
+
+　　…
+
+	TransportContext context= TransportContextHolder.getTransportContext();
+	HttpServletConnection connection=（HttpServletConnection）context.getConnection();
+	HttpServletRequest request= connection.getHttpServletRequest();
+	String IPAddress = request.getRemoteAddr();
+
+　　…
+
+###Spring-WS类库说明
+
+　　Spring-WS 需要使用到大量第三方依赖类库，了解不同场合需要使用哪些依赖类库会给具体的应用
+开发带来帮助，表B-3 对这些类库进行了说明。
+
+![15041902](/public/img/tec/xml-transform-4.jpg)
 
