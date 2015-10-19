@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Hibernate02_常用检索方式
+title: Hibernate02：常用检索方式
 category: 技术
 tags: Hibernate
 keywords: Hibernate查询
