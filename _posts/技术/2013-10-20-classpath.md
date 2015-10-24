@@ -14,7 +14,7 @@ description:
 　　所以，src不是classpath, WEB-INF/classes,lib才是classpath
 WEB-INF/ 是资源目录, 客户端不能直接访问。
 
-　　这话是没错，不过现在的IDE编译器在编译时会把src下的文件（是文件，不是.java）移到WEB-INF/classes下。但这是可以设置的，项目右键 -〉properties-〉java build path->source ,这个下面有一个default output folder,**这个地方的设置为类的输出路径即classpath**，通常设置如下：
+　　这话是没错，不过现在的**IDE编译器在编译时会把src下的文件（是文件，不是.java）移到WEB-INF/classes下**。但这是可以设置的，项目右键 -〉properties-〉java build path->source ,这个下面有一个default output folder,**这个地方的设置为类的输出路径即classpath**，通常设置如下：
 
 	项目名称/WebContent/WEB-INF/classes 
 
