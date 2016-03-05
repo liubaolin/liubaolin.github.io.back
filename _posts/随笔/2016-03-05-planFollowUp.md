@@ -52,7 +52,7 @@ description:
 		      <th align="center" width="120">3月3号</th>
 		      <th align="center" width="120">3月5号</th>
 			  <th align="center" width="120">X月X号</th>
-			  <th align="center"  width="120" bgcolor="green">是否<br/>完成</th>
+			  <th align="center"  width="120" bgcolor="#A9A9A9">是否<br/>完成</th>
 		    </tr>
 		  </thead>
 		  <tbody>
@@ -84,7 +84,7 @@ description:
 		      <th align="center" width="120">X月X号</th>
 		      <th align="center" width="120">X月X号</th>
 			  <th align="center" width="120">X月X号</th>
-			  <th align="center"  width="120"  bgcolor="green">是否<br/>完成</th>
+			  <th align="center"  width="120"  bgcolor="#A9A9A9">是否<br/>完成</th>
 		    </tr>
 		  </thead>
 		  <tbody>
@@ -115,7 +115,7 @@ description:
 		      <th align="center" width="120">X月X号</th>
 		      <th align="center" width="120">X月X号</th>
 			  <th align="center" width="120">X月X号</th>
-			  <th align="center" width="120"  bgcolor="green">是否<br/>完成</th>
+			  <th align="center" width="120"  bgcolor="#A9A9A9">是否<br/>完成</th>
 		    </tr>
 		  </thead>
 		  <tbody>
@@ -147,7 +147,7 @@ description:
 		      <th align="center" width="120">X月X号</th>
 			  <th align="center" width="120">X月X号</th>
 			  <th align="center"   width="120"   
-				bgcolor="green">是否<br/>完成</th>
+				bgcolor="#A9A9A9">是否<br/>完成</th>
 		    </tr>
 		  </thead>
 		  <tbody>
