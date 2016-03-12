@@ -58,7 +58,7 @@ description:
 		      <th align="center"  width="120">3月2号</th>
 		      <th align="center" width="120">3月3号</th>
 		      <th align="center" width="120">3月5号</th>
-			  <th align="center" width="120">X月X号</th>
+			  <th align="center" width="120">3月6号</th>
 			  <th align="center"  width="120" bgcolor="#A9A9A9">是否<br/>完成</th>
 		    </tr>
 		  </thead>
@@ -68,8 +68,8 @@ description:
 		      <td align="center">2hour</td>
 		      <td align="center">2hour</td>
 		      <td align="center">6hour</td>
-			  <td align="center">暂无</td>
-			  <td rowspan="2"><font color="red">总时长10小时<br/>暂未完成</font></td>
+			  <td align="center">6hour</td>
+			  <td rowspan="2"><font color="green">总时长16小时<br/>完成</font></td>
 		    </tr>
 			<tr>
 		      <td align="center" bgcolor="yellow">事项</td>
@@ -86,10 +86,10 @@ description:
 		<thead>
 		    <tr >
 		      <th align="center" bgcolor="yellow" width="50">日期</th>
-		      <th align="center" width="120">X月X号</th>
-		      <th align="center" width="120">X月X号</th>
-		      <th align="center" width="120">X月X号</th>
-			  <th align="center" width="120">X月X号</th>
+		      <th align="center" width="120">3月7号</th>
+		      <th align="center" width="120">3月8号</th>
+		      <th align="center" width="120">3月9号</th>
+			  <th align="center" width="120">3月10号</th>
 			  <th align="center"  width="120"  bgcolor="#A9A9A9">是否<br/>完成</th>
 		    </tr>
 		  </thead>
