@@ -2,7 +2,7 @@
 layout: post
 title: jetty+struts2导致welcome-file-list失效
 category: 技术
-tags: Struts2
+tags: struts2总结
 keywords: Struts2+jetty
 description: 
 ---
