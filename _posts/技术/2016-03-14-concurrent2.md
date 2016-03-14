@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 01多线程共享对象
+title: 02多线程共享对象
 category: 技术
 tags: java并发编程
 keywords: java并发编程 对象的共享
