@@ -1,10 +1,10 @@
 ---
 layout: post
-title: 单例模式的几种实现方式
+title: 单例模式
 category: 技术
 tags: 设计模式
-keywords: 单例模式
-description: singleton
+keywords: singleton
+description: 
 ---
 
 　　从今天开始会开始更新一些设计模式的文章，一个新的学习过程，就从简单的单例模式来吧。
