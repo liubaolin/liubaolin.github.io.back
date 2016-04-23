@@ -1,6 +1,0 @@
-{
-  "name": "Liubaolin.GitHub.io",
-  "tagline": "刘宝林的blog",
-  "body": "button属性修改在bootstrap.css里面\r\nbutton显示修改在-include/footer.html和base.js里面\r\n\r\n",
-  "note": "Don't delete this file! It's used internally to help with page regeneration."
-}
