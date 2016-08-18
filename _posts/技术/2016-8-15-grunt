@@ -1,0 +1,61 @@
+---
+layout: post
+title: Grunt学习总结
+category: 技术
+tags: 前端学习笔记
+keywords: Grunt
+description:
+---
+### Grunt是干什么的
+
+    Grunt是用来实现前台自动化的,比如压缩、编译Sass、测试、检查、自动刷新等功能.这些功能都是都可以
+    通过Grunt插件来完成.
+
+### 1.环境准备
+
+* grunt和grunt插件都是通过npm安装并管理的,npm是node.js的包管理器.
+所以使用Grunt前需要先在系统中安装最新版的nodeJs.安装nodejs后,npm就已经被安装到系统中了.
+      sudo dnf install node //fedora安装node
+      node -v //查看node版本
+      npm -v //查看npm版本
+      npm update -g npm //升级npm
+
+* 通过npm全局安装grunt命令行(grunt-cli),grunt-cli可以用来执行grunt相关命令.
+      npm install -g grunt-cli
+>安装grunt-cli后并不代表安装grunt了,我们一般在项目根目录安装grunt及其插件,
+这样我们可以在多个项目中分别安装不同版本的grunt,而只需要安装一个全局的grunt-cli
+就可以调用这些grunt
+
+* 接下来我们就可以创建一个项目(或者我们已经有了一个项目),并且在项目的根目录中安装grunt了
+
+### 2.在项目中安装并使用grunt
+
+* 新建gruntStudy目录(或者我们已经有一个项目),
+该目录就作为我们项目的根目录.
+
+* grunt项目根目录需要两个文件package.json和gruntfile.js,
+前者用来nodejs的包管理,后者是grunt的配置文件.下面我们就来创建这两个文件.
+
+* 创建package.json文件
+      npm init //创建一个基本的package.json文件
+>最简单的办法就是直接拷贝一个package.json文件过来,
+也可以通过grunt-init项目脚手架工具生成,关于项目脚手架文件,后面会有详细说明.
+
+* 创建gruntfile.js文件
+>这里我们通过项目脚手架grunt-int生成一个gruntfile.js文件
+
+      npm install -g grunt-init // 全局安装grunt-init
+      git clone https://github.com/gruntjs/grunt-init-gruntfile.git ~/.grunt-init/gruntfile //安装gruntfile模板
+      grunt-init gruntfile //通过项目脚手架生成一个gruntfile文件
+>同样,最简单有效的方式也是直接拷贝一个Gruntfile.js文件
+
+* 安装grunt及其插件
+
+  >package.json文件中描述了项目依赖的插件(在通过grunt-init方式生成Gruntfile.js后,可以发现package.json中被添加了grunt及其他插件)
+
+      npm install  //安装package.json文件中列出的依赖(grunt及其它grunt插件)
+
+      npm install XXX(grunt插件名) --save-dev  //安装xxx插件,并添加到package.json文件中
+
+
+* 到此,简单的grunt环境搭建及使用就差不多了.下面就重点说明package.json文件及Gruntfile.js文件了.
