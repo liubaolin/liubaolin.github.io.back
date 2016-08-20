@@ -3,19 +3,19 @@ paginate: 10
 markdown: redcarpet
 
 # 作者信息
-author: 
+author:
   name: Anya Lin
   email: baolin1991@126.com
   link: http://www.richey88.com
   weibo: http://weibo.com/signup/signup.php?inviteCode=1833931013
   github: https://github.com/liubaolin
-  music: 
-  linkedin: 
+  music:
+  linkedin:
 
 # 站点信息
 title: 刘宝林的博客
 description: My personal blog
-url: http://www.richey88.com
+url: http://www.baolinliu.com
 rss_url: /pages/atom.xml
 
 # gavatar头像及Favicon
@@ -24,20 +24,20 @@ favicon: /public/img/deer3.png
 
 # google analytics 设置
 ga:
-  id: 
-  url: 
+  id:
+  url:
 
 # disqus 设置
 disqus:
-  shortname: richey88
+  shortname: baolinliu
 
 # 主题设置，自动激活某个标签
 active: 读书
 
 # 首页除了最新文章外显示分类
-cates: 
+cates:
   - Optimization
-  - tags
+  - 读书
 
 # 中文本地化
 locals:
