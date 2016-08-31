@@ -2,9 +2,9 @@
 layout: post
 title: css使用技巧
 category: 技术
-tags: css
-keywords: css 使用技巧
-description:一些基础性的css使用技巧
+tags: 前端开发
+keywords:
+description:
 ---
 
 ### 容器中的文字水平居中
