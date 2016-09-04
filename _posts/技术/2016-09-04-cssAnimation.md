@@ -3,8 +3,6 @@ layout: post
 title: css动画
 category: 技术
 tags: 前端开发
-keywords:css amination
+keywords:
 description:
 ---
-
-本来想写一篇css动画的,一个快速指南,发现一篇不错的blog,这里就不重复造轮子了.
