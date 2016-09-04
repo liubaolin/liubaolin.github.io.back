@@ -6,7 +6,7 @@ tags: 前端开发
 keywords:
 description:
 ---
->整理的了一些常用的css技巧,方便快速查阅.前面的部分是直接展示出效果来了,具体实现方式可查阅源代码.
+>整理的了一些常用的css技巧,方便快速查阅.前面的部分是直接展示出效果来了,具体实现方式可查阅源代码
 
 <!DOCTYPE html>
 <html lang="zh-cn">
@@ -91,22 +91,23 @@ description:
   <pre>
     利用条件注释,设置只对IE产生作用的语句
     xmp标签可以让html代码作为字符串在页面里面显示出来；
-    pre标签，可以在保留原来文本格式的基础上让文本在页面上显示出来；例如你的文章原来有个换行，如果把它放在pre标签里面，在页面上显示出来的时候还是换行而不需要额外的加换行标签<br/>
+    pre标签，可以在保留原来文本格式的基础上让文本在页面上显示出来；例如你的文章原来有个换行，如果把它放在pre标签里面，在页面上显示出来的时候还是换行而不需要额外的加换行标签
   </pre>
+
   <h3>9.IE兼容性</h3>
   <pre>
     IE6专用语句:方法一
     由于IE6不把html视为文档的根元素，所以利用这一点，可以写出只有IE6才能读到的语句：
   </pre>
-  <xmp>
-      /* the following rules apply only to IE6 */
+
+     /* the following rules apply only to IE6 */
   　　* html{
   　　}
   　　* html body{
   　　}
   　　* html .foo{
   　　}
-  </xmp>
+
   <pre>
     IE7专用语句则要写成
   </pre>
