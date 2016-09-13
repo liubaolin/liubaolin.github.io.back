@@ -225,41 +225,71 @@ Column注解的的RetentionPolicy的属性值是RUTIME,这样注解处理器可�
  注解元素必须有确定的值，要么在定义注解的默认值中指定，要么在使用注解时指定，非基本类型的注解元素的值不可为null。因此, 使用空字符串或0作为默认值是一种常用的做法。这个约束使得处理器很难表现一个元素的存在或缺失的状态，因为每个注解的声明中，所有元素都存在，并且都具有相应的值，为了绕开这个约束，我们只能定义一些特殊的值，例如空字符串或者负数，一次表示某个元素不存在，在定义注解时，这已经成为一个习惯用法。例如：
 
 
- 1 package annotation;
- 2
- 3 import java.lang.annotation.Documented;
- 4 import java.lang.annotation.ElementType;
- 5 import java.lang.annotation.Retention;
- 6 import java.lang.annotation.RetentionPolicy;
- 7 import java.lang.annotation.Target;
- 8
- 9 /**
-10  * 水果供应者注解
-11  * @author peida
-12  *
-13  */
-14 @Target(ElementType.FIELD)
-15 @Retention(RetentionPolicy.RUNTIME)
-16 @Documented
-17 public @interface FruitProvider {
-18     /**
-19      * 供应商编号
-20      * @return
-21      */
-22     public int id() default -1;
-23     
-24     /**
-25      * 供应商名称
-26      * @return
-27      */
-28     public String name() default "";
-29     
-30     /**
-31      * 供应商地址
-32      * @return
-33      */
-34     public String address() default "";
-35 }
+     package annotation;
+
+    import java.lang.annotation.Documented;
+    import java.lang.annotation.ElementType;
+    import java.lang.annotation.Retention;
+    import java.lang.annotation.RetentionPolicy;
+    import java.lang.annotation.Target;
+
+    /**
+     * 水果供应者注解
+     * @author peida
+     *
+     */
+    @Target(ElementType.FIELD)
+    @Retention(RetentionPolicy.RUNTIME)
+    @Documented
+    public @interface FruitProvider {
+        /**
+         * 供应商编号
+         * @return
+         */
+        public int id() default -1;
+
+        /**
+         * 供应商名称
+         * @return
+         */
+        public String name() default "";
+
+        /**
+         * 供应商地址
+         * @return
+         */
+        public String address() default "";
+    }
+    ckage annotation;
+
+    import java.lang.annotation.Documented;
+    import java.lang.annotation.ElementType;
+    import java.lang.annotation.Retention;
+    import java.lang.annotation.RetentionPolicy;
+    import java.lang.annotation.Target;
+
+    /**
+     * 水果供应者注解
+     * @author peida
+     *
+     */
+    @Target(ElementType.FIELD)
+    @Retention(RetentionPolicy.RUNTIME)
+    @Documented
+    public @interface FruitProvider {
+        /**
+         * 供应商编号
+         * @return
+         */
+        public int id() default -1;
+
+        /**
+         * 供应商名称
+         * @return
+         */
+        public String name() default "";
+                                                                                                                                   64,1         底端
+    }
 
 
 
