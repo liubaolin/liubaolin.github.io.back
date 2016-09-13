@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Autowired与Resource的区别
+title: @Autowired与@Resource的区别
 category: 技术
 tags: 注解
 keywords:
