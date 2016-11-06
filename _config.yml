@@ -1,26 +1,26 @@
 permalink: /:year/:month/:day/:title.html
 paginate: 10
-markdown: redcarpet
+markdown: kramdown
 
 # 作者信息
 author:
-  name: Anya Lin
+  name: bolynn
   email: baolin1991@126.com
-  link: http://www.richey88.com
+  link: http://www.baolinliu.com
   weibo: http://weibo.com/signup/signup.php?inviteCode=1833931013
   github: https://github.com/liubaolin
   music:
   linkedin:
 
 # 站点信息
-title: 刘宝林的博客
+title: 浮天沧海
 description: My personal blog
 url: http://www.baolinliu.com
 rss_url: /pages/atom.xml
 
 # gavatar头像及Favicon
-gavatar: /public/img/deer3.png
-favicon: /public/img/deer3.png
+gavatar: /public/img/photo.jpg
+favicon: /public/img/photo.jpg
 
 # google analytics 设置
 ga:
@@ -41,7 +41,9 @@ cates:
 
 # 中文本地化
 locals:
-  tags: 标签
+  tags: 分类
   about: 关于
   newest: 最新文章
   archive: 归档
+
+gems: [jekyll-paginate]
