@@ -96,9 +96,9 @@ body, html {
 /*  padding-left: 40px;
   padding-right: 40px;
 */
-  padding: 0 5% 0 5%;
+  padding: 0 130px 0 130px;
   color: #656565;
-  line-height: 1.42857143;
+  line-height: 2.0;
 }
 #content {
   font-size: 18px;
@@ -121,4 +121,10 @@ blockquote p {
 .show-commend {
   width: 100%;
   margin-bottom: 40px;
+}
+.bottom-banner{
+  height:160px;
+  background-color:	#F5F5F5;
+  border-top: 1px solid #d9d9d9;
+  border-bottom: 1px solid whitesmoke;
 }
