@@ -13,7 +13,9 @@ description:
 ![2016111202](http://ogiythg18.bkt.clouddn.com/2016-11-12-ideaMultiMaven01.png)
 
 ![2016111203](http://ogiythg18.bkt.clouddn.com/2016-11-12-ideaMultiMaven02.png)
+
 ### 2.创建一个maven父工程--webapp-parent,统一管理所有的jar
+
 ![2016111204](http://ogiythg18.bkt.clouddn.com/2016-11-12-ideaMultiMaven03.png)
 
 父工程webapp-parent只是管理jar，选择  
