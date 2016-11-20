@@ -1,10 +1,10 @@
 ---
 layout: post
-title: 03：maven打包
+title: 04：maven打包
 category: 技术
 tags: Maven系列
 keywords: Maven配置
-description: 
+description:
 ---
 
 
@@ -22,4 +22,3 @@ Goals是Maven文档里会有说明的目标动作，一般填"clean install"就�
 然后把这个目录下的内容放到服务器就好了。放好后要重启服务器上的tomcat才可以。
 
 　　![16030506](/public/img/tec/2016-03-05_mavenpackage.jpg)
-
