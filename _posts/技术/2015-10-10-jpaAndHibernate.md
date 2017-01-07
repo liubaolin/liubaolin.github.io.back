@@ -36,11 +36,11 @@ Hibernate就是这样的产品，它实现了Java Persistence那部分规范，�
  Hibernate Core可以单独使用,应用程序将使用Hibernate原生的Api及xml中的映射元数据.        
 2. Hibernate Annotations
 
-JPA规范定义了orm元数据的语法和语义并在Jdk5.0提供了使用注解的方式定义应用程序元数据.Hibernate Annotation是对jpa定义元数据注解的实现和扩展.
+ JPA规范定义了orm元数据的语法和语义并在Jdk5.0提供了使用注解的方式定义应用程序元数据.Hibernate Annotation是对jpa定义元数据注解的实现和扩展.    
 
 3. Hibernate EntityManager
 
-Hibernate EntityManager是基于Hibernate Core之上对JPA的实现.(Hibernate Core提供Hibernate原生Api).
+ Hibernate EntityManager是基于Hibernate Core之上对JPA的实现.(Hibernate Core提供Hibernate原生Api).
 
 >Hibernate Annotations应该和Hibernate EntityManager结合使用.因为它们都是对JPA的实现,如果用了Hibernate Annotation去创建映射而没有用
 Hibernate EntityManager的方式查询编写应用程序是不正常的.
