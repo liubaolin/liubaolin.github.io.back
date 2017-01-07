@@ -44,3 +44,12 @@ Hibernate就是这样的产品，它实现了Java Persistence那部分规范，�
 
 >Hibernate Annotations应该和Hibernate EntityManager结合使用.因为它们都是对JPA的实现,如果用了Hibernate Annotation去创建映射而没有用
 Hibernate EntityManager的方式查询编写应用程序是不正常的.
+
+
+## Hibernate 3.2以及以后的版本开始支持JPA，涉及JPA的子项目有三个，它们分别是：
+
+— Hibernate Core：Hibernate框架的核心实现。
+
+— Hibernate Annotations：支持JDK 5.0的注释。
+
+— Hibernate EntityManager：支持JPA的实现。
