@@ -1,0 +1,123 @@
+---
+layout: post
+title: <<javaScript Dom 编程艺术>>(javaScript循序渐进01)
+category: 技术
+tags: 前端开发
+keywords:
+description:
+---
+在学习新东西的时候总是容易浮躁,是时候从头捋一遍javaScript知识体系了,重新夯实一下基础,同时温故而知新,循序渐进的提高.本篇作为javaScript循序渐进系列的第一篇,就从<<javaScript Dom编程艺术>>这本书说起.最近刚看完这本书,对于有一点javaScript基础的人来说,看起来还是蛮快的.感觉这本书很适合有一点javaScript基础但是又对一些概念不清楚人或者是完全没有javaScript基础的人.下面是我的一点读书笔记.由于这本书确实很基础,我记得也不多.总之,入门的话强烈推荐.
+
+
+## javaScript DOM编程艺术
+
+
+### chapter two    
+
+      最好的做法是把<script>标签放在html文档的最后</body>标签之前
+      这样能使浏览器更快的加载页面(第五章详解)
+
+      javaScript中用反斜线\对字符进行转义
+      var mood = 'don\'t ask'
+
+      javaScript允许使用任意位小数
+
+      数组可以用Array声明,声明的同时可以指定初始元素的个数(也可以不指定)
+      var arr = Array();
+      var arr = Array(4);
+      var arr = Array("a","b","c");
+      var arr = ["a","b","c"];
+      var arr = [1,"b",true];
+      为新元素给出下标时不必局限于使用整数数字,还可以使用字符串;
+      var arr = [];
+      arr["name"] = "richey";  //这样的数组叫做关联数组
+      本质上在创建关联数组时,你创建的是Array数组的属性
+
+      内建对象(内建在javaScript语言中的对象) Date Math Array...
+      宿主对象(由浏览器提供的对象) document Element ...
+          window对象代表浏览器本身,这个对象的属性和方法通常被称为BOM(浏览器对象模型)
+          document对象主要处理网页内容
+
+### chapter three
+    获取元素节点
+            getElementById
+            getElementsByTagName
+            getElementsByClassName        
+    操作节点的属性
+            getAttribute
+            setAttribute
+
+### chapter four(javaScript图片库
+
+    如果一个站点用了多个javaScript文件,为了减少对站点的请求次数(提高性能),应该把这些文件合并到一个js文件中.
+
+    this表示当前节点对象
+
+    元素节点的nodeType属性值是1
+    属性节点的nodeType属性值是2
+    文本节点的nodeType属性值是3
+
+### chapter seven
+    Ajax对象的核心就是XMLHttpRequest对象.这个对象充当着浏览器中的脚本(客户端)与服务器之间的中间人的角色.
+
+    适用ajax的时候要注意同源策略.适用XMLHttpRequest对象发送的请求,只能访问与其所在的html处于同一域中的数据.
+
+### chapter eight
+    <abbr>标签的含义是"缩略语",HTML5中<aronym>标签已经被<abbr>标签代替
+
+    <blockquote>引用
+
+    accesskey属性可以把可以把一个元素与键盘上特定的按键关联在一起.(定义快捷键)
+
+    position属性等于relative的元素可以(通过应用float属性)从文档的正常显示顺序里脱离出来
+    这也是relative和static的区别
+
+### chapter eleven(HTML5)
+    HTML5新增标签
+    结构层
+        <section>
+        <article>
+        <header>
+        <footer>
+    媒体交互
+        <canvas>
+        <audio>
+        <video>   为在文档中嵌入影片及与影片交互定义了一种标准的方式,同时也把嵌入操作简化成了一个标签
+    表单
+        email
+        url
+        date
+        number
+        range用于生成滑动条
+        search用户搜索框
+        tel用于输入电话号码
+        color用于选择颜色
+        属性
+        autocomplete 用于为文本输入框添加一组建议的输入项
+        autofocus 用于让表单元素自动获得焦点
+        form 用于对<form>标签外部的表单元素分组
+        min/max和step,用在范围<range>和数值<number>输入框中
+        pattern,用于定义一个正则表达式,以便验证输入的值
+        placeholder,用于在文本输入框中显示临时性的提示信息
+        required,表示必填
+
+### 最佳实践
+
+    1.最好的做法是把<script>标签放在html文档的最后</body>标签之前
+
+    2.    <!-- 通过伪协议javascript:调用javascript代码的方式非常不好 -->
+          <a href="javascript:popUp('http://www.baidu.com')" title="baidu">打开新窗口</a>
+          <!--把href的属性值设为#,只是为了创建一个空链接,实际工作会由onclick属性负责完成,
+          在一些浏览器"#"链接指向文档的开头
+          这种做法同样不好-->
+          <a href="#" onclick="popUp('http://www.taobao.com');return false" title="taobao">更改网址</a>
+          <!--最佳实践-->
+          <a href="https://github.com" onclick="popUp(this.href);return false" title="github">更改网址</a>
+          <script src="bestPractice.js"></script>
+
+    3.js脚本引入的位置对页面的初次加载时间有很大的影响,把<script>标签放在文档的末尾</body>标签之前
+    可以是页面加载更快,而且不影响window.load事件
+
+    4.压缩脚本
+
+    5.在需要把一大段html内容插入网页时,innerHTML很适用
