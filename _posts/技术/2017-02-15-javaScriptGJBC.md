@@ -52,20 +52,20 @@ description:
 
   * 5中简单的数据类型(也称之为基本类型)    
 
-  > Undefined、Null、Number、String、Boolean         任何数值除以0都将返回NaN    
-   NaN与任何值都不相等,包括NaN本身    
-   可以用isNaN()函数判断,isNaN()会尝试将参数转换为数值,不能转换成数值的值都会导致这个函数返回true
+    > Undefined、Null、Number、String、Boolean         任何数值除以0都将返回NaN    
+     NaN与任何值都不相等,包括NaN本身    
+     可以用isNaN()函数判断,isNaN()会尝试将参数转换为数值,不能转换成数值的值都会导致这个函数返回true
 
   * 1种复杂数据类型:Object    
-  
-  > Object本质上是由一组无名的键值对组成的    
-  Object的每个实例都具有以下的属性和方法:    
-      * Constructor:构造函数    
-      * hasOwnProperty(propertyName):用于检查给定的属性是否在当前的实例中    
-      * isPropertyTypeOf(object):传入的对象是否是另一个对象的原型    
-      * propertyIsEnumerable(propertyName):给定的属性是否能够用for-in语句类枚举    
-      * toLocalString:返回该对象的字符串表示,该字符串与执行环境的地区对应.    
-      * toString返回对象的字符串表示.    
-      * valueOf():返回对象的字符串、数值、或布尔值表示.通常与toString返回的值相同.
+
+    > Object本质上是由一组无名的键值对组成的    
+    Object的每个实例都具有以下的属性和方法:    
+        * Constructor:构造函数    
+        * hasOwnProperty(propertyName):用于检查给定的属性是否在当前的实例中    
+        * isPropertyTypeOf(object):传入的对象是否是另一个对象的原型    
+        * propertyIsEnumerable(propertyName):给定的属性是否能够用for-in语句类枚举    
+        * toLocalString:返回该对象的字符串表示,该字符串与执行环境的地区对应.    
+        * toString返回对象的字符串表示.    
+        * valueOf():返回对象的字符串、数值、或布尔值表示.通常与toString返回的值相同.
 
       > 由于BOM和DOM都是宿主对象,因为它们是由宿主实现提供和定义的.ECMA-262不负责定义宿主对象,因此宿主对象可能会也可能不会继承Object
