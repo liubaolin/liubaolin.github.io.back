@@ -66,5 +66,5 @@ description:
         * propertyIsEnumerable(propertyName):给定的属性是否能够用for-in语句类枚举    
         * toLocalString:返回该对象的字符串表示,该字符串与执行环境的地区对应.    
         * toString返回对象的字符串表示.    
-        * valueOf():返回对象的字符串、数值、或布尔值表示.通常与toString返回的值相同.
+        * valueOf():返回对象的字符串、数值、或布尔值表示.通常与toString返回的值相同.     
     由于BOM和DOM都是宿主对象,因为它们是由宿主实现提供和定义的.ECMA-262不负责定义宿主对象,因此宿主对象可能会也可能不会继承Object
