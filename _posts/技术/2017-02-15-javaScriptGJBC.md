@@ -7,7 +7,7 @@ keywords:
 description:
 ---
 
-《javaScript高级程序设计》 --javaScript循序渐进第二本
+>《javaScript高级程序设计》 --javaScript循序渐进第二本
 
 
 ## chapter two(在html中使用javaScript)
@@ -78,8 +78,6 @@ description:
     > 由于BOM和DOM都是宿主对象,因为它们是由宿主实现提供和定义的.ECMA-262不负责定义宿主对象,因此宿主对象可能会也可能不会继承Object    
 
 
-## chapter three(语句)
-
 * switch语句    
 
   > javaScript中可以在Switch语句中使用任何数据类型       
@@ -88,4 +86,4 @@ description:
 
 * javaScript函数中所有参数传递的都是值,不可能通过引用传递    
 
-* javaScript函数(没有方法签名)不能像传统意义那样实现重载
+* javaScript函数(由于不存在方法签名)不能像传统意义那样实现重载
