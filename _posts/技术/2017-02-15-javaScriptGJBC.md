@@ -59,7 +59,7 @@ description:
   * 1种复杂数据类型:Object    
 
     > Object本质上是由一组无名的键值对组成的    
-    Object的每个实例都具有以下的属性和方法:    
+    Object的每个实例都具有以下的属性和方法:      
 
       * Constructor:构造函数    
 
@@ -72,7 +72,20 @@ description:
       * toLocalString:返回该对象的字符串表示,该字符串与执行环境的地区对应.    
 
       * toString返回对象的字符串表示.    
-      
+
       * valueOf():返回对象的字符串、数值、或布尔值表示.通常与toString返回的值相同.     
 
-    > 由于BOM和DOM都是宿主对象,因为它们是由宿主实现提供和定义的.ECMA-262不负责定义宿主对象,因此宿主对象可能会也可能不会继承Object
+    > 由于BOM和DOM都是宿主对象,因为它们是由宿主实现提供和定义的.ECMA-262不负责定义宿主对象,因此宿主对象可能会也可能不会继承Object    
+
+
+## chapter three(语句)
+
+* switch语句    
+
+  > javaScript中可以在Switch语句中使用任何数据类型       
+  每个case的值可以是常量、变量、甚至是表达式    
+  switch语句在比较值是时候用的是全等操作符    
+
+* javaScript函数中所有参数传递的都是值,不可能通过引用传递    
+
+* javaScript函数(没有方法签名)不能像传统意义那样实现重载
