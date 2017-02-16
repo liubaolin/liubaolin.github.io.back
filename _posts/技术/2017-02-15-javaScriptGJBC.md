@@ -87,3 +87,39 @@ description:
 * javaScript函数中所有参数传递的都是值,不可能通过引用传递    
 
 * javaScript函数(由于不存在方法签名)不能像传统意义那样实现重载
+
+## chapter four(变量、作用域和内存问题)
+
+* javaScript函数参数是值传递、值传递、值传递!!
+
+      function setName(obj){
+      	obj.name='richey';
+        obj = new Object();
+        obj.name = 'kelly';
+      }
+
+      var person = new Object();
+      setName(person);
+      alert(person.name);//richey
+
+* type操作符是确定一个变量是字符串、数值、布尔值、还是undefined的最佳工具.如果变量的值是一个对象或者null,则typeof操作符会返回"object"    
+
+* javaScript没有块级作用域!!!    
+
+      if(true){
+      	var color = "blue";
+      }
+      alert(color); //blue    
+
+      function add(num1,num2){
+      	var sum = num1 + num2;
+        return sum;
+      }
+      var result = add(10,20);
+      alert(sum); //由于sum不是有效的变量,这里会报错d
+
+  > 使用var声明的变量会自动被添加到最近的环境中.在函数内部,最近的环境就是函数环境.如果初始化时没有用var声明,该变量会被添加到全局环境.(不建议这么做,而且严格模式下不允许这么做)
+
+* 优化内存占用的最佳方式,就是为执行中的代码只保存必要的数据.一旦数据不用,最好将其设置为null,以释放其引用.这种做法叫解除引用.局部变量会在它们离开环境时自动解除引用.
+
+* 解除引用,并不意味着自动回收该值所占用的空间.解除引用的真正目的是让其值脱离执行环境,以便垃圾收集器在下次执行的时候将其回收.
