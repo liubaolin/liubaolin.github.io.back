@@ -178,8 +178,22 @@ description:
     * m:多行模式,即在到达一行文本的末尾时,会继续查找下一行中是否有匹配模式的项.      
 
 
-      var pattern1 = /\[bc\]at/i;
-      var pattern2 = new Regexp("\\[bc\\]at","i");//pattern2和pattern2是一样的
+      var pattern1 = /\[bc\]at/i; //字面量的方式
+      var pattern2 = new RegExp("\\[bc\\]at","i");//使用Regexp构造函数       
+
+  > ECMAScript5规定使用字面量和使用构造函数RegExp一样,每次都创建新的RegExp实例.        
+* RegExp实例属性    
+
+  > lastIndex:整数,表示开始搜索下一个匹配项的字符位置,从0开始    
+
+* RegExp实例方法    
+
+  > exec():接受一个参数(即要应用模式的字符串),返回包含第一个匹配项信息的数组(或者在没有匹配项的情况下返回null)     
+  返回的虽然是Array的实例,但包含两个额外的属性index(表示匹配项在字符串中的位置)和input(表示应用正则表达式的字符串).     
+  对于exec()方法而言,即使模式表达式中设置了全局标志(g),它每次也只会返回一个匹配项.    
+  在不设置全局标志的情况下,同一个字符串多次调用exec(),将始终返回第一个匹配项信息.    
+  而设置了全局标志的情况下,每次调用exec()方法都会在字符串中继续查找新的匹配项    
+
 
       var text = "mom and dad and baby";
       var pattern = /mom (and dad (and baby)?)?/gi;
@@ -190,6 +204,33 @@ description:
       alert(matches[0]);//mom and dad and baby
       alert(matches[1]);//and dad and baby
       alert(matches[2]);//and baby
+
+
+      var text = "cat,bat,sat,rat";
+      var pattern1 = /.at/;
+
+      var matches = pattern1.exec(text);
+      alert(matches.index);       //0
+      alert(matches[0]);          //cat
+      alert(pattern1.lastIndex);  //0
+
+      var matches = pattern1.exec(text);
+      alert(matches.index);       //0
+      alert(matches[0]);          //cat
+      alert(pattern1.lastIndex);  //0
+
+      var pattern2 = /.at/g;
+      var matches = pattern2.exec(text);
+      alert(matches.index);       //0
+      alert(matches[0]);          //cat
+      alert(pattern1.lastIndex);  //0
+
+      var matches = pattern2.exec(text);
+      alert(matches.index);       //4
+      alert(matches[0]);          //bat
+      alert(pattern2.lastIndex);  //7
+
+
 
 
 ## SUMMARY    
