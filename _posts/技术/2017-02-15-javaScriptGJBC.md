@@ -255,7 +255,50 @@ description:
       };
 
 
-  >  
+  >  不仅可以像传递参数一样,把一个函数传递给另一个函数,而且还可以将一个函数作为另一个函数的结果返回.     
+
+* 函数的内部属性    
+
+    > arguments:主要用途是保存函数参数     
+      callee:是一个指针,指向用用arguments对象的函数    
+      this:函数的执行环境对象(当在网页的全局作用域中调用函数时,this对象引用的就是window)    
+      caller:ECMAScript5中新增的函数属性,该属性中保存着调用当前函数的函数的引用;     
+
+* 函数的属性和方法    
+
+  * length属性:表示函数希望接收的命名参数的个数    
+  * prototype属性:在ECMAScript5中prototype属性是不可枚举的,因此不可用for-in    
+
+  * 每个函数都包含两个非继承而来的方法:apply()和call().这两个方法的作用都是在特定的作用域中调用函数.它们的区别在于接收参数的方式不同.    
+
+  > apply()和call()真正强大的地方是能扩充函数赖以运行的作用域    
+
+        window.color = "red";
+        var o = {color:"blue"};
+
+        function sayColor(){
+        	alert(this.color);
+        }
+
+        sayColor();            //red
+
+        sayColor.apply(this);  //red
+        sayColor.apply(window);//red
+        sayColor.apply(o);		 //blue
+
+* EMCAScript5还定义了一个方法:bind()    
+
+  > 这个方法会创建一个函数的实例,其this值会绑定到bind函数的参数值.    
+
+        window.color = "red";
+        var o = {color:"blue"};
+
+        function sayColor(){
+        	alert(this.color);
+        }
+
+        var objectSayColor = sayColor.bind(o);
+        objectSayColor();   //blue
 
 
 ## SUMMARY    
