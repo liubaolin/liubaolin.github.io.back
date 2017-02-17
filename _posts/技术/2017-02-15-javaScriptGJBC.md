@@ -230,8 +230,32 @@ description:
         alert(pattern2.lastIndex);  //7       
 
   > IE的javaScript在实现lastIndex上存在偏差,即使在非全局模式下lastIndex属性每次也会变化       
-  > test()方法
+  > test()方法    
 
+* Function    
+
+  > 函数声明与函数表达式:解析器会率先读取函数声明,并使其在执行任何代码之前是可用的(可以访问);至于函数表达式,则必须要等到解析器执行到它所在的代码行时,才会被解释执行.    
+
+      函数声明方式:    
+      function sum(num1,num2){
+        return num1 + num2;
+      }
+      函数表达式定义函数的方式:
+      var sum = function(num1,num2){
+        return num1 + num2;
+      }
+
+      alert(sum(10,10));//20
+      function sum(num1,num2){
+        return num1 + num2;
+      };
+      alert(sum(10,10));//报错
+      var sum = function(num1,num2){
+        return num1 + num2;
+      };
+
+
+  >  
 
 
 ## SUMMARY    
