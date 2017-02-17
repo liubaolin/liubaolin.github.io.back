@@ -122,4 +122,76 @@ description:
 
 * 优化内存占用的最佳方式,就是为执行中的代码只保存必要的数据.一旦数据不用,最好将其设置为null,以释放其引用.这种做法叫解除引用.局部变量会在它们离开环境时自动解除引用.
 
-* 解除引用,并不意味着自动回收该值所占用的空间.解除引用的真正目的是让其值脱离执行环境,以便垃圾收集器在下次执行的时候将其回收.
+* 解除引用,并不意味着自动回收该值所占用的空间.解除引用的真正目的是让其值脱离执行环境,以便垃圾收集器在下次执行的时候将其回收.    
+
+## chapter five(引用类型)
+
+* 引用类型的值(对象)是引用类型的一个实例    
+
+* 引用类型是一种数据结构,将数据和功能组织在一起.(它常被称为类)
+
+* Object类型    
+
+* Array类型    
+
+  > 数组中的每一项可以保存任意类型的数据    
+    数据的大小可以动态调整,即随着数据的添加自动增长    
+    数组的length属性不是只读的.通过设置这个属性,可以已出数组末尾的数据     
+    ECMAScript5新增了Array.isArray()方法,用来确定某个值是不是数组.   
+    栈方法(LIFO):push()/pop()    
+    队列方法(FIFO):push()/shift()/unshift()    
+    排序方法:reverse()  sort()(默认字符串自然排序)    
+
+
+    var arr = [1,2,3];
+    arr.length = 2;
+    arr[arr.length] = 'a';
+    arr[arr.length] = 'b';
+    alert(arr);    
+
+    var arr = [1,2,3,4,5];
+    var sum = arr.reduce(function(prev,cur,index,array){
+    	return prev + cur;
+    })
+    alert(sum); //15
+
+* Date类型    
+
+  > ECMAScript5添加了Date.now()方法,返回调用这个方法时日期的毫秒数    
+
+
+      //本地时间2005年5月5日下午5:55:55
+      var date = new Date(2005,4,5,17,55,55);
+
+      var start  = Date.now();
+      var _start = +new Date(); //用+操作符把Date对象转换成字符串,可以达到同意的目的
+
+* RegExp类型    
+
+* 创建正则表达式    
+
+  > var expression = /pattern/flags;    
+    其中模式(pattern)部分可以是任何简单或复杂的正则表达式.每个正则表达式都可以带一个或多个标志(flags),匹配模式支持下列三种标志:    
+
+    * g:表示全局模式,即模式会被应用到所有字符串,而非发现第一个匹配项就停止;    
+    * i:忽略大小写模式    
+    * m:多行模式,即在到达一行文本的末尾时,会继续查找下一行中是否有匹配模式的项.    
+
+
+      var pattern1 = /\[bc\]at/i;
+      var pattern2 = new Regexp("\\[bc\\]at","i");//pattern2和pattern2是一样的
+
+      var text = "mom and dad and baby";
+      var pattern = /mom (and dad (and baby)?)?/gi;
+
+      var matches = pattern.exec(text);
+      alert(matches.index);//匹配项在字符串中的位置 0
+      alert(matches.input);//应用正则表达式的字符串 mom and dad and baby
+      alert(matches[0]);//mom and dad and baby
+      alert(matches[1]);//and dad and baby
+      alert(matches[2]);//and baby
+
+
+## SUMMARY    
+
+* Array.isArray()方法,用来确定某个值是不是数组.    
