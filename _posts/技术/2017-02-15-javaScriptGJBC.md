@@ -143,17 +143,17 @@ description:
     排序方法:reverse()  sort()(默认字符串自然排序)    
 
 
-    var arr = [1,2,3];
-    arr.length = 2;
-    arr[arr.length] = 'a';
-    arr[arr.length] = 'b';
-    alert(arr);    
+        var arr = [1,2,3];
+        arr.length = 2;
+        arr[arr.length] = 'a';
+        arr[arr.length] = 'b';
+        alert(arr);    
 
-    var arr = [1,2,3,4,5];
-    var sum = arr.reduce(function(prev,cur,index,array){
-    	return prev + cur;
-    })
-    alert(sum); //15
+        var arr = [1,2,3,4,5];
+        var sum = arr.reduce(function(prev,cur,index,array){
+        	return prev + cur;
+        })
+        alert(sum); //15
 
 * Date类型    
 
@@ -178,8 +178,8 @@ description:
     * m:多行模式,即在到达一行文本的末尾时,会继续查找下一行中是否有匹配模式的项.      
 
 
-      var pattern1 = /\[bc\]at/i; //字面量的方式
-      var pattern2 = new RegExp("\\[bc\\]at","i");//使用Regexp构造函数       
+        var pattern1 = /\[bc\]at/i; //字面量的方式
+        var pattern2 = new RegExp("\\[bc\\]at","i");//使用Regexp构造函数       
 
   > ECMAScript5规定使用字面量和使用构造函数RegExp一样,每次都创建新的RegExp实例.        
 * RegExp实例属性    
@@ -195,42 +195,40 @@ description:
   而设置了全局标志的情况下,每次调用exec()方法都会在字符串中继续查找新的匹配项    
 
 
-      var text = "mom and dad and baby";
-      var pattern = /mom (and dad (and baby)?)?/gi;
+        var text = "mom and dad and baby";
+        var pattern = /mom (and dad (and baby)?)?/gi;
 
-      var matches = pattern.exec(text);
-      alert(matches.index);//匹配项在字符串中的位置 0
-      alert(matches.input);//应用正则表达式的字符串 mom and dad and baby
-      alert(matches[0]);//mom and dad and baby
-      alert(matches[1]);//and dad and baby
-      alert(matches[2]);//and baby
-
-
-      var text = "cat,bat,sat,rat";
-      var pattern1 = /.at/;
-
-      var matches = pattern1.exec(text);
-      alert(matches.index);       //0
-      alert(matches[0]);          //cat
-      alert(pattern1.lastIndex);  //0
-
-      var matches = pattern1.exec(text);
-      alert(matches.index);       //0
-      alert(matches[0]);          //cat
-      alert(pattern1.lastIndex);  //0
-
-      var pattern2 = /.at/g;
-      var matches = pattern2.exec(text);
-      alert(matches.index);       //0
-      alert(matches[0]);          //cat
-      alert(pattern1.lastIndex);  //0
-
-      var matches = pattern2.exec(text);
-      alert(matches.index);       //4
-      alert(matches[0]);          //bat
-      alert(pattern2.lastIndex);  //7
+        var matches = pattern.exec(text);
+        alert(matches.index);//匹配项在字符串中的位置 0
+        alert(matches.input);//应用正则表达式的字符串 mom and dad and baby
+        alert(matches[0]);//mom and dad and baby
+        alert(matches[1]);//and dad and baby
+        alert(matches[2]);//and baby
 
 
+        var text = "cat,bat,sat,rat";
+        var pattern1 = /.at/;
+
+        var matches = pattern1.exec(text);
+        alert(matches.index);       //0
+        alert(matches[0]);          //cat
+        alert(pattern1.lastIndex);  //0
+
+        var matches = pattern1.exec(text);
+        alert(matches.index);       //0
+        alert(matches[0]);          //cat
+        alert(pattern1.lastIndex);  //0
+
+        var pattern2 = /.at/g;
+        var matches = pattern2.exec(text);
+        alert(matches.index);       //0
+        alert(matches[0]);          //cat
+        alert(pattern1.lastIndex);  //0
+
+        var matches = pattern2.exec(text);
+        alert(matches.index);       //4
+        alert(matches[0]);          //bat
+        alert(pattern2.lastIndex);  //7
 
 
 ## SUMMARY    
