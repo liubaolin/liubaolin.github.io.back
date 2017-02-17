@@ -140,20 +140,19 @@ description:
     ECMAScript5新增了Array.isArray()方法,用来确定某个值是不是数组.   
     栈方法(LIFO):push()/pop()    
     队列方法(FIFO):push()/shift()/unshift()    
-    排序方法:reverse()  sort()(默认字符串自然排序)    
+    排序方法:reverse()  sort()(默认字符串自然排序)       
 
+          var arr = [1,2,3];
+          arr.length = 2;
+          arr[arr.length] = 'a';
+          arr[arr.length] = 'b';
+          alert(arr);    
 
-        var arr = [1,2,3];
-        arr.length = 2;
-        arr[arr.length] = 'a';
-        arr[arr.length] = 'b';
-        alert(arr);    
-
-        var arr = [1,2,3,4,5];
-        var sum = arr.reduce(function(prev,cur,index,array){
-        	return prev + cur;
-        })
-        alert(sum); //15
+          var arr = [1,2,3,4,5];
+          var sum = arr.reduce(function(prev,cur,index,array){
+          	return prev + cur;
+          })
+          alert(sum); //15     
 
 * Date类型    
 
@@ -228,7 +227,10 @@ description:
         var matches = pattern2.exec(text);
         alert(matches.index);       //4
         alert(matches[0]);          //bat
-        alert(pattern2.lastIndex);  //7
+        alert(pattern2.lastIndex);  //7    
+  > IE的javaScript在实现lastIndex上存在偏差,即使在非全局模式下lastIndex属性每次也会变化    
+  > test()方法
+
 
 
 ## SUMMARY    
