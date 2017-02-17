@@ -227,8 +227,9 @@ description:
         var matches = pattern2.exec(text);
         alert(matches.index);       //4
         alert(matches[0]);          //bat
-        alert(pattern2.lastIndex);  //7    
-  > IE的javaScript在实现lastIndex上存在偏差,即使在非全局模式下lastIndex属性每次也会变化    
+        alert(pattern2.lastIndex);  //7       
+
+  > IE的javaScript在实现lastIndex上存在偏差,即使在非全局模式下lastIndex属性每次也会变化       
   > test()方法
 
 
