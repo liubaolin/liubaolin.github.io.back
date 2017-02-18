@@ -33,8 +33,8 @@ active: 读书
 
 # 首页除了最新文章外显示分类
 cates:
-  - Optimization
-  - 读书
+#  - Optimization
+#  - 读书
 
 # 中文本地化
 locals:
