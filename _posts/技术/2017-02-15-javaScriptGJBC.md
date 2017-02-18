@@ -358,9 +358,116 @@ description:
             });
           }
 
-          alert(htmlEscape("<p class=\"greeting\">hello world</p>"));
+          alert(htmlEscape("<p class=\"greeting\">hello world</p>"));     
+
+* 单体内置对象    
+
+  > 由ECMAScript实现提供的，不依赖于宿主环境的对象。这些对象在ECMAScript程序运行之前就已经从存在了。    
+
+* Global对象    
+
+  > Global对象：这个对象从哪个角度雷看都是不存在的，不属于任何其它对象的属性和方法最终都是它的属性和方法，比如isNan（），isFinite（），parseIInt(),parseFloat(),还有URI
+    相关方法（用特殊的UTF-8编码替换所有无效的字符）    
+    encodeURI：使用encode编码后的结果是除了空格之外的其它字符都原封不动，只有空格被替换成了%20（主要用于整个URI）；    
+    encodeURIComponent：会将所有的非字母数字字符替换成对应的编码（主要用于URI中的某一段）    
+    与encodeURI和encodeURIComponent对应的是decodeURI和decodeURIComponent    
+    URI方法能够编码所有的Unicode字符
+
+          var uri = "http://www.baolinliu.com/hello world";
+          alert(encodeURI(uri));//http://www.baolinliu.com/hello%20world
+          alert(encodeURIComponent(uri));//http%3A%2F%2Fwww.baolinliu.com%2Fhello%20world     
+
+  > eval()方法：eval（）方法就像是一个完整的ECMAScript解析器，它只接受一个参数，即要执行的ECMAScript（或javaScript）字符串.    
+          eval("alert('hello')");
+          alert('hello');//与上面是等价的
+
+          var msg = 'hello world';
+          eval('alert(msg)');//hello world  严格模式会报错    
+
+          eval("function sayHi(){alert('hi');}");
+          sayHi();//hi  严格模式会报错      
+
+  > 严格模式下外部访问不到eval（）内部定义的任何函数或变量。    
+    eval能够解析代码字符串的能力非常强大，同样也非常的的危险，须谨慎使用。尤其是在执行用户输入的内容时！    
+
+* window对象    
+
+  > Web浏览器中都是将Global对象作为window对象的一部分加以实现的。因此在全局作用域内声明的所有函数和变量都是window对象的属性。    
+
+* Math对象    
+
+  > min()和max()方法:用于确定一组数值中的最大值和最小值    
+    这两个方法都可以接受任意多个数值参数    
+    要找到数组中的最大值和最小值，可以配合apply（）方法    
+
+        var max = Math.max(2,18,1,20,84,32);
+        alert(max);
+
+        var values = [2,18,1,20,84,32];
+        max = Math.max.apply(Math,values);
+        alert(max);     
+
+  > 舍入方法    
+    Math.ceil();    
+    Math.round();    
+    Math.floor();     
+
+  > random()方法:返回介于0和1之间的与ige随机数     
+
+        function selectFrom(lowerValue,upperValue){
+        	var choices = upperValue - lowerValue + 1;
+          return Math.floor(Math.random() * choices + lowerValue);
+        }
+
+        var value = selectFrom(2,10);
+        alert(value);//返回2-10之间的随机数
+
+        var colors = ["red","green","blue","yellow","black","purple","brown"];
+        var color = colors[selectFrom(0,colors.length -1)];
+        alert(color);//随机选择颜色     
+
+
+
 
 
 ## SUMMARY    
 
-* Array.isArray()方法,用来确定某个值是不是数组.    
+* Array.isArray()方法,用来确定某个值是不是数组.     
+
+* 判断数组中的最大值    
+
+        var values = [2,18,1,20,84,32];
+        max = Math.max.apply(Math,values);
+        alert(max);    
+
+* String的replace方法的第二个参数可以是函数        
+      function htmlEscape(text){
+        return text.replace(/[<>*&]/g,function(match,pos,originalText){
+          switch(match){
+            case "<":
+              return "&lt;";
+            case ">":
+              return "&gt;";
+            case "&":
+              return "&amp;";
+            case "\*":
+              return "&quot;";
+          }
+        });
+      }
+
+      alert(htmlEscape("<p class=\"greeting\">hello world</p>"));     
+
+* 随机选择    
+
+      function selectFrom(lowerValue,upperValue){
+      	var choices = upperValue - lowerValue + 1;
+        return Math.floor(Math.random() * choices + lowerValue);
+      }
+
+      var value = selectFrom(2,10);
+      alert(value);//返回2-10之间的随机数
+
+      var colors = ["red","green","blue","yellow","black","purple","brown"];
+      var color = colors[selectFrom(0,colors.length -1)];
+      alert(color);//随机选择颜色
