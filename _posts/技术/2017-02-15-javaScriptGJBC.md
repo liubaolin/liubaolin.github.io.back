@@ -298,8 +298,19 @@ description:
         }
 
         var objectSayColor = sayColor.bind(o);
-        objectSayColor();   //blue
+        objectSayColor();   //blue    
 
+* 基本包装类型    
+
+  > 对基本类型的包装类型调用typeof会返回"object",而且所有基本类型的包装类型对象都会被转换没布尔值true;    
+    使用new调用基本类型包装函数的构造,与直接使用同名的转型函数是不一样的    
+
+        var value = "25";
+        var number = Number(value);
+        alert(typeof number); //number
+
+        var number2 = new Number("25");
+        alert(typeof number2); //object
 
 ## SUMMARY    
 
