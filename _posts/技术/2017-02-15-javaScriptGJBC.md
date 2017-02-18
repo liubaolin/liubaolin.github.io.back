@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 《javaScript高级程序设计(第三版)》(javaScript循序渐进02)
+title: 《javaScript高级程序设计(第三版)》(javaScript循序渐进02基础部分)
 category: 技术
 tags: 前端开发
 keywords:
