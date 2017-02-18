@@ -312,6 +312,55 @@ description:
         var number2 = new Number("25");
         alert(typeof number2); //object
 
+* Number类型    
+
+  > toFixed(）方法会按照制定字符位返回数字的字符串表示形式    
+    能够自动舍入的特性，使得toFixed方法很适合处理货币值（但是IE8及之前的版本不能正确的处理[-0.94,-0.5]及[0.5,0.94]之间的值，IE8会返回0而不是-1或1）    
+
+          var num = 10;
+          alert(num.toFixed(2));//"10.00"
+          var num2 = 10.005;
+          alert(num2.toFixed(2));//"10.001"
+          var num3 = -0.91;
+          alert(num3.toFixed(0)); //-1    
+  > toPrecision()方法    
+
+* String类型    
+
+* 字符串的模式匹配方法    
+
+  > matche()方法    
+    在字符串上调用这个方法本质上与调用RegExp的的exec（）方法是一样的    
+    search（）方法返回字符串中第一个匹配项的索引位置，如果没有找到则返回-1，而且search（）方法始终从字符开头向后查找    
+    replace（）方法：可以接受2个参数，第一个参数可以是字符串或正则表达式，第二个参数可以是字符串或者函数。如果第一个参数是字符，则只会替换第一个字符串，如果要替换所有匹配的字符串，则第一个参数必须用正则表达式，而且要提供全局标志（g）。    
+
+          var text = "cat,bat,sat,fat";
+          var result = text.replace("at","ond");
+          alert(result);//"cond,bat,sat,fat"
+
+          result = text.replace(/at/g,"ond");
+          alert(result);//"cond,bond,sond,fond"    
+
+  > replace()方法的第二个参数黑白可以是函数，在只有一个匹配项的时候，会向这个函数传递三个参数：匹配项，匹配项在字符串中的位置，原始字符串    
+
+          function htmlEscape(text){
+          	return text.replace(/[<>*&]/g,function(match,pos,originalText){
+            	switch(match){
+              	case "<":
+                	return "&lt;";
+                case ">":
+                	return "&gt;";
+                case "&":
+                	return "&amp;";
+                case "\*":
+                	return "&quot;";
+              }
+            });
+          }
+
+          alert(htmlEscape("<p class=\"greeting\">hello world</p>"));
+
+
 ## SUMMARY    
 
 * Array.isArray()方法,用来确定某个值是不是数组.    
