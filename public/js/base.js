@@ -1,14 +1,15 @@
 /* 控制导航按钮动作 */
 function nav_click(is_show) {
+  $("#nav_btn").data('clicked', !is_show);
   if (is_show) {
     /* 显示左侧aside */
     $('.aside')
-      .addClass('visible-md visible-lg')
+      .addClass('aside-visiable')
       .removeClass('hidden-md hidden-lg')
     /* 调整右侧内容 */
     $('.aside3')
-      .removeClass('col-md-13 col-lg-13')
-      .addClass('col-md-13 col-lg-13');
+      .removeClass('aside3-large')
+      .addClass('aside3-show')
     /* 调整文字内容格式 */
     $('.aside3-content')
       .removeClass('col-md-10 col-lg-8 col-md-offset-1 col-lg-offset-2')
@@ -16,12 +17,12 @@ function nav_click(is_show) {
   } else {
     /* 隐藏左侧aside */
     $('.aside')
-      .removeClass('visible-md visible-lg')
+      .removeClass('aside-visiable')
       .addClass('hidden-md hidden-lg');
     /* 右侧内容最大化 */
     $('.aside3')
-      .removeClass('col-md-13 col-lg-13')
-      .addClass('col-md-13 col-lg-13');
+      .removeClass('aside3-show')
+      .addClass('aside3-large');
     /* 修改文字排版 */
     $('.aside3-content')
       .removeClass('col-md-13')
@@ -43,10 +44,8 @@ $(document).ready(function() {
   /* 控制左侧 aside 的动作 */
   $("#nav_btn").on('click', function() {
     isClicked = $(this).data('clicked');
-
     nav_click(isClicked);
-
-    $(this).data('clicked', !isClicked);
+    // $(this).data('clicked', !isClicked);
   });
 
   $("#content_btn").on('click', function(){
@@ -60,8 +59,11 @@ $(document).ready(function() {
 
   $(document).pjax('.pjaxlink', '#pjax', { fragment: "#pjax", timeout: 10000 });
   $(document).on("pjax:end", function() {
-    if($("body").find('.container').width() < 992)
-      $('#nav_btn').click();
+    if($("body").find('#aside3container').width() < 992)
+      // $('#nav_btn').click();
+      nav_click(false);
+      $("#nav_btn").data('clicked', true);
+
     $('.aside3').scrollTop(0);
     contentEffects();
   });
