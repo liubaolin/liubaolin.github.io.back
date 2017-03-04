@@ -1,5 +1,9 @@
 /* 控制导航按钮动作 */
 function nav_click(is_show) {
+  if($('.aside').css('display') == 'none' && !is_show){
+    is_show = true;
+  }
+
   $("#nav_btn").data('clicked', !is_show);
   if (is_show) {
     /* 显示左侧aside */
@@ -62,8 +66,6 @@ $(document).ready(function() {
     if($("body").find('#aside3container').width() < 992)
       // $('#nav_btn').click();
       nav_click(false);
-      $("#nav_btn").data('clicked', true);
-
     $('.aside3').scrollTop(0);
     contentEffects();
   });
