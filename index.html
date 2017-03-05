@@ -36,7 +36,7 @@ titlename: 首页
   </div>
   {% for cate in site.cates %}
     <div class="col-md-12">
-      <div class="panel panel-primary">
+      <div class="panel panel-warning">
         <div class="panel-heading">{{ cate }}</div>
         {% for tag in site.tags %}
           {% if tag[0] == cate %}
