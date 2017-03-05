@@ -2,9 +2,9 @@
 layout: post
 title: 02多线程共享对象
 category: 技术
-tags: java并发编程
+tags: Java基础
 keywords: java并发编程 对象的共享
-description: 
+description:
 ---
 
 　　本篇主要讲，如何发布一个对象，使它可以安全的被多个线程访问。在上一篇我们知道用synchronized加锁机制可以构建的同步代码块，实现原子性操作，其实同步还有另一个重要的方面———内存可见性，即当同步的内容被某一个线程修改了以后，其它的线程能够看到内容的变化。

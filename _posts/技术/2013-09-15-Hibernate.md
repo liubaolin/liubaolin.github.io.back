@@ -2,7 +2,7 @@
 layout: post
 title: Hibernate02：常用检索方式
 category: 技术
-tags: Hibernate
+tags: ORM
 keywords: Hibernate查询
 description: 主要是自己写的DEMO
 ---
@@ -18,10 +18,10 @@ description: 主要是自己写的DEMO
 	import org.hibernate.criterion.Restrictions;
 	import org.springframework.orm.hibernate3.HibernateCallback;
 	import org.springframework.orm.hibernate3.HibernateTemplate;
-	
+
 	import com.mankeep.mm.common.dao.spring.HibernateGenericDao;
 	import com.mankeep.mm.core.entity.Company;
-	
+
 	/**
 	 * 该类主要用于测试Hibernate的检索方式
 	 * @author lin
@@ -35,7 +35,7 @@ description: 主要是自己写的DEMO
 		 */
 		public void testHQL(){
 			HibernateTemplate hitemplate = this.getHibernateTemplate();
-			
+
 			/**
 			 * 1、find(String hql);
 			 */
@@ -44,22 +44,22 @@ description: 主要是自己写的DEMO
 	//		for(Company company :companys){
 	//			System.out.println(company);
 	//		}
-			
-			
+
+
 			/**
-			 * 2、find(String hql , Object value); 
+			 * 2、find(String hql , Object value);
 			 * 带传参的，支持模糊查询
 			 */
 	//		String hql= "from Company c where c.companyName = ?";
 	//		List<Company> companys = hitemplate.find(hql, "richey");
-			
+
 	//		String hql = "from Company c where c.companyName like ?";
 	//		List<Company> companys = hitemplate.find(hql, "%che%");
 	//		for(Company company : companys){
 	//			System.out.println(company);
 	//		}
-			
-			
+
+
 			/**
 			 * 3、find(String hql, Object[] values);
 			 * 多个参数查询
@@ -69,7 +69,7 @@ description: 主要是自己写的DEMO
 	//		for(Company company : companys){
 	//			System.out.println(company);
 	//		}
-			
+
 			/**
 			 * 4、findByExample(Object exampleEntity)
 			 */
@@ -81,7 +81,7 @@ description: 主要是自己写的DEMO
 	//		for(Company obj : companys){
 	//			System.out.println(obj);
 	//		}
-			
+
 			/**
 			 * QBE(Query By Example)
 			 * 5、findByExample(Object exampleEntity, int start, int  maxResults)
@@ -95,7 +95,7 @@ description: 主要是自己写的DEMO
 	//		for(Company obj : companys){
 	//			System.out.println(obj);
 	//		}
-			
+
 			/**
 			 * 6、findByNamedParam(String queryString , String paramName , Object value)
 			 * 动态绑定参数查询
@@ -107,8 +107,8 @@ description: 主要是自己写的DEMO
 	//		for(Company obj : companys){
 	//			System.out.println(obj);
 	//		}
-			
-			
+
+
 			/**
 			 *  7、findByNamedParam(String queryString , String[] paramName , Object[] value)
 			 */
@@ -121,7 +121,7 @@ description: 主要是自己写的DEMO
 			}
 		}
 		//=====================================HQL end ============================================
-		
+
 		/**
 		 * =====================================QBC start ============================================
 		 * Query By Criteria(QBC)
@@ -142,7 +142,7 @@ description: 主要是自己写的DEMO
 			}
 		}
 		//=====================================QBC end ============================================
-	
+
 		/**
 		 * ===================================SQL start=============================================
 		 * Hibernate支持本地SQL的检索方式
@@ -154,7 +154,7 @@ description: 主要是自己写的DEMO
 				@Override
 				public List doInHibernate(Session session) throws HibernateException,
 						SQLException {
-					
+
 					Query query = session.createSQLQuery("select * from mm_company_td t where t.name=:name and t.companyaddr=:addr");
 					query.setString("name","richey");
 					query.setString("addr", "上海");
@@ -166,5 +166,5 @@ description: 主要是自己写的DEMO
 				System.out.println(obj);
 			}
 		}
-		
+
 		}

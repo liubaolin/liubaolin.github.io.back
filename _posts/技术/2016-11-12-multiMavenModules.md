@@ -2,7 +2,7 @@
 layout: post
 title: IDEA创建maven多模块项目
 category: 技术
-tags: 开发工具
+tags: IDE
 keywords: intellij
 description:
 ---

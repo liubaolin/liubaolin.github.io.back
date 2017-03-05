@@ -2,9 +2,9 @@
 layout: post
 title: jetty+struts2导致welcome-file-list失效
 category: 技术
-tags: struts2总结
+tags: MVC
 keywords: Struts2+jetty
-description: 
+description:
 ---
 　　最近做了一个小项目，本地部署后可正常访问（tomcat+Struts2），输入http://ip:port/appName后可正常跳转到web.xml的welcom-file-list中配置的默认访问页面index.jsp，但是部署到新浪云平台后，输入<font color="green">http://ip:port/appName</font>访问报错，如下
 
@@ -16,10 +16,10 @@ description:
 
 　　	浪费了好多时间才发现<font color="red">jetty+struts2会导致welcome-file-list失效</font>，可以通过struts的<font color="red">default-action-ref</font>配置解决此问题。
 
-	
+
 	<!-- 未找到action时，默认跳转到此action -->
-	<default-action-ref name="index" /> 
-	
+	<default-action-ref name="index" />
+
 	<!-- 去登录页面 -->
 	<action name="index">
 		<result name="success">
@@ -45,4 +45,3 @@ description:
 				/WEB-INF/error.jsp
 			</result>
 		</global-results>
-

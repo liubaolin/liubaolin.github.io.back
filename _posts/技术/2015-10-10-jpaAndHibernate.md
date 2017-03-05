@@ -2,7 +2,7 @@
 layout: post
 title: EJB、JPA和Hibernate
 category: 技术
-tags: Hibernate
+tags: ORM
 keywords: Hibernate、ejb、jpa
 description:
 ---

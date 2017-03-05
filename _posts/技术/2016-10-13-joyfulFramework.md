@@ -2,7 +2,7 @@
 layout: post
 title: 架构探险00--如何写一个简单的mvc框架
 category: 技术
-tags: 从0开始写框架
+tags: 框架初探
 keywords:
 description:
 ---

@@ -2,9 +2,9 @@
 layout: post
 title: 03并发相关API(重要)
 category: 技术
-tags: java并发编程
+tags: Java基础
 keywords: java并发编程 线程安全
-description: 
+description:
 ---
 
 ###一、同步容器类
@@ -52,10 +52,10 @@ description:
 　　队列是一种非常常用的数据结构，存取数据本着先进先出原则，Java提供queue接口来描述队列，常见的实现类为LinkedList、CurrentLinkedQueue、及PriorityQueue等。CurrentLinkedQueue，是一个传统的先进先出的队列，PriorityQueue是一个（非并发的）优先队列。Queu上的操作不会阻塞，如果队列为空那么获取元素的操作就将返回空值。
 
 	 	boolean offer<E e>  向队列末尾追加元素，追加成功放回true
-	
+
 	    E poll(): 从队首获取元素。
 	                注意：获取后，队首元素就从队列中删除了。
-	
+
 	    E peek():获取队首元素，但该元素不会从队列中删除。
 	           Queue<String> queue = new LinkedList<String>();
 	     /**
@@ -64,7 +64,7 @@ description:
 	    queue.offer( "A");
 	    queue.offer( "B");
 	    queue.offer( "C");
-	    
+
 	    System. out.println(queue);
 	     //输出队首元素
 	     //peek()方法获取队首元素，但不会将其从队列中删除
@@ -72,7 +72,7 @@ description:
 	    System. out.println(queue);
 	     //poll()方法获取队首元素，但是会将其从队列中删除。
 	      遍历队列
-	    
+
 	     /**
 	     * 遍历队列是一次性的      取出来队列就为空了
 	     */
@@ -123,13 +123,13 @@ description:
 	中断应用
 	使用中断信号量中断非阻塞状态的线程
 	中断线程最好的，最受推荐的方式是，使用共享变量（shared variable）发出信号，告诉线程必须停止正在运行的任务。线程必须周期性的核查这一变量，然后有秩序地中止任务
-	 
+
 	package com.ljq.test;
-	
+
 	public class ThreadTest extends Thread{
 	    //线程中断信号量
-	    volatile boolean stop=false; 
-	    
+	    volatile boolean stop=false;
+
 	    public static void main(String[] args) throws Exception {
 	        ThreadTest thread=new ThreadTest();
 	        System.out.println("Starting thread...");   
@@ -141,8 +141,8 @@ description:
 	        Thread.sleep(3000);   
 	        System.out.println("Stopping application...");  
 	    }
-	    
-	    
+
+
 	    @Override
 	    public void run() {
 	        //每隔一秒检测一下中断信号量
@@ -151,41 +151,41 @@ description:
 	            long begin=System.currentTimeMillis();
 	            /**
 	             * 使用while循环模拟sleep方法，这里不要使用sleep，否则在阻塞时会抛InterruptedException异常而退出循环，
-	             * 这样while检测stop条件就不会执行，失去了意义。 
+	             * 这样while检测stop条件就不会执行，失去了意义。
 	             */
 	            while ((System.currentTimeMillis() - begin < 1000)) {
-	                
+
 	            }   
 	        }
 	        System.out.println("Thread exiting under request!");   
 	    }
 	}
-	 
+
 	运行结果如下：
-	    
+
 ![16031601](/public/img/tec/concurrent-api01.png)
 
-         
+
 	使用thread.interrupt()中断非阻塞状态线程
 	虽然上面案例要求一些编码，但并不难实现。同时，它给予线程机会进行必要的清理工作。这里需注意一点的是需将共享变量定义成volatile 类型或将对它的一切访问封入同步的块/方法（synchronized blocks/methods）中。上面是中断一个非阻塞状态的线程的常见做法，但对非检测isInterrupted()条件会更简洁:
-	 
+
 	package com.ljq.test;
-	
+
 	public class ThreadTest extends Thread{
-	    
+
 	    public static void main(String[] args) throws Exception {
 	        ThreadTest thread=new ThreadTest();
 	        System.out.println("Starting thread...");   
 	        thread.start();   
 	        Thread.sleep(3000);   
 	        System.out.println("Asking thread to stop...");   
-	        // 发出中断请求 
-	        thread.interrupt(); 
+	        // 发出中断请求
+	        thread.interrupt();
 	        Thread.sleep(3000);   
 	        System.out.println("Stopping application...");  
 	    }
-	    
-	    
+
+
 	    @Override
 	    public void run() {
 	        //每隔一秒检测一下中断信号量
@@ -194,39 +194,39 @@ description:
 	            long begin=System.currentTimeMillis();
 	            /**
 	             * 使用while循环模拟sleep方法，这里不要使用sleep，否则在阻塞时会抛InterruptedException异常而退出循环，
-	             * 这样while检测stop条件就不会执行，失去了意义。 
+	             * 这样while检测stop条件就不会执行，失去了意义。
 	             */
 	            while ((System.currentTimeMillis() - begin < 1000)) {
-	                
+
 	            }   
 	        }
 	        System.out.println("Thread exiting under request!");   
 	    }
 	}
-	 
-	    
+
+
 	到目前为止一切顺利！但是，当线程等待某些事件发生而被阻塞，又会发生什么？当然，如果线程被阻塞，它便不能核查共享变量，也就不能停止。这在许多情况下会发生，例如调用Object.wait()、ServerSocket.accept()和DatagramSocket.receive()时，这里仅举出一些。
 	他们都可能永久的阻塞线程。即使发生超时，在超时期满之前持续等待也是不可行和不适当的，所以，要使用某种机制使得线程更早地退出被阻塞的状态。下面就来看一下中断阻塞线程技术。
 	使用thread.interrupt()中断阻塞状态线程
 	Thread.interrupt()方法不会中断一个正在运行的线程。这一方法实际上完成的是，设置线程的中断标示位，在线程受到阻塞的地方（如调用sleep、wait、join等地方）抛出一个异常InterruptedException，并且中断状态也将被清除，这样线程就得以退出阻塞的状态。下面是具体实现：
-	  
-	 
+
+
 	package com.ljq.test;
-	
+
 	public class ThreadTest extends Thread{
-	    
+
 	    public static void main(String[] args) throws Exception {
 	        ThreadTest thread=new ThreadTest();
 	        System.out.println("Starting thread...");   
 	        thread.start();   
 	        Thread.sleep(3000);   
-	        thread.interrupt();// 等中断信号量设置后再调用 
+	        thread.interrupt();// 等中断信号量设置后再调用
 	        System.out.println("Asking thread to stop...");   
 	        Thread.sleep(3000);   
 	        System.out.println("Stopping application...");  
 	    }
-	    
-	    
+
+
 	    @Override
 	    public void run() {
 	        while(!Thread.currentThread().isInterrupted()){
@@ -252,14 +252,14 @@ description:
 	        System.out.println("Thread exiting under request...");   
 	    }
 	}
-	 
+
 	上面案例中一旦Thread.interrupt()被调用，线程便收到一个异常，于是逃离了阻塞状态并确定应该停止。上面我们还可以使用共享信号量来替换!Thread.currentThread().isInterrupted()条件，但不如它简洁.
-	               
+
 	死锁状态线程无法被中断
 	下面案例中试着去中断处于死锁状态的两个线程，但这两个线都没有收到任何中断信号（抛出异常），所以interrupt()方法是不能中断死锁线程的，因为锁定的位置根本无法抛出异常
-	 
+
 	package com.ljq.test;
-	
+
 	public class ThreadTest extends Thread {
 	    public static void main(String args[]) throws Exception {
 	        final Object lock1 = new Object();
@@ -285,7 +285,7 @@ description:
 	        Thread.sleep(3000);
 	        System.out.println("Stopping application...");
 	    }
-	
+
 	    private static void deathLock(Object lock1, Object lock2) {
 	        try {
 	            synchronized (lock1) {
@@ -300,25 +300,25 @@ description:
 	        }
 	    }
 	}
-	 
-	     
+
+
 	中断I/O操作
 	然而，如果线程在I/O操作进行时被阻塞，又会如何？I/O操作可以阻塞线程一段相当长的时间，特别是牵扯到网络应用时。例如，服务器可能需要等待一个请求（request），又或者，一个网络应用程序可能要等待远端主机的响应。
-	                 
+
 	实现此InterruptibleChannel接口的通道是可中断的：如果某个线程在可中断通道上因调用某个阻塞的 I/O 操作（常见的操作一般有这些：serverSocketChannel. accept()、socketChannel.connect、socketChannel.open、socketChannel.read、socketChannel.write、fileChannel.read、fileChannel.write）而进入阻塞状态，而另一个线程又调用了该阻塞线程的 interrupt 方法，这将导致该通道被关闭，并且已阻塞线程接将会收到ClosedByInterruptException，并且设置已阻塞线程的中断状态。另外，如果已设置某个线程的中断状态并且它在通道上调用某个阻塞的 I/O 操作，则该通道将关闭并且该线程立即接收到 ClosedByInterruptException；并仍然设置其中断状态。如果情况是这样，其代码的逻辑和第三个例子中的是一样的，只是异常不同而已。
-	                  
+
 	如果你正使用通道（channels）（这是在Java 1.4中引入的新的I/O API），那么被阻塞的线程将收到一个ClosedByInterruptException异常。但是，你可能正使用Java1.0之前就存在的传统的I/O，而且要求更多的工作。既然这样，Thread.interrupt()将不起作用，因为线程将不会退出被阻塞状态。尽管interrupt()被调用，线程也不会退出被阻塞状态，比如ServerSocket的accept方法根本不抛出异常。
-	                  
+
 	很幸运，Java平台为这种情形提供了一项解决方案，即调用阻塞该线程的套接字的close()方法。在这种情形下，如果线程被I/O操作阻塞，当调用该套接字的close方法时，该线程在调用accept地方法将接收到一个SocketException（SocketException为IOException的子异常）异常，这与使用interrupt()方法引起一个InterruptedException异常被抛出非常相似，（注，如果是流因读写阻塞后，调用流的close方法也会被阻塞，根本不能调用，更不会抛IOExcepiton，此种情况下怎样中断？我想可以转换为通道来操作流可以解决，比如文件通道）。下面是具体实现：
-	 
+
 	package com.ljq.test;
-	
+
 	import java.io.IOException;
 	import java.net.ServerSocket;
-	
+
 	public class ThreadTest extends Thread {
 	    volatile ServerSocket socket;
-	
+
 	    public static void main(String args[]) throws Exception {
 	        ThreadTest thread = new ThreadTest();
 	        System.out.println("Starting thread...");
@@ -333,7 +333,7 @@ description:
 	        }
 	        System.out.println("Stopping application...");
 	    }
-	
+
 	    public void run() {
 	        try {
 	            socket = new ServerSocket(3036);
@@ -354,4 +354,3 @@ description:
 	        System.out.println("Thread exiting under request...");
 	    }
 	}
-	

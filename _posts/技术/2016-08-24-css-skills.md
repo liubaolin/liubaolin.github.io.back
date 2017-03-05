@@ -2,7 +2,7 @@
 layout: post
 title: css使用技巧
 category: 技术
-tags: 前端开发
+tags: CSS
 keywords:
 description:
 ---

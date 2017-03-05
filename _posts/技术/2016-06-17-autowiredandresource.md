@@ -2,7 +2,7 @@
 layout: post
 title: Autowired与Resource的区别
 category: 技术
-tags: 注解
+tags: Spring
 keywords:
 description:
 ---

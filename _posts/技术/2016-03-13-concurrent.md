@@ -2,9 +2,9 @@
 layout: post
 title: 01线程安全性
 category: 技术
-tags: java并发编程
+tags: Java基础
 keywords: java并发编程 线程安全
-description: 
+description:
 ---
 　　以下全是个人对并发和线程安全的一些理解，如有谬误，还望指正。
 

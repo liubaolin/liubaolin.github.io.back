@@ -2,7 +2,7 @@
 layout: post
 title: HttpClient4.5
 category: 技术
-tags: HttpClient
+tags: Java/web
 keywords:
 description:
 ---

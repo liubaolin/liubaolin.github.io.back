@@ -2,7 +2,7 @@
 layout: post
 title: Java注解
 category: 技术
-tags: 注解
+tags: Java核心
 keywords:
 description:
 ---

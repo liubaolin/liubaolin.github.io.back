@@ -2,7 +2,7 @@
 layout: post
 title: 《javaScript Dom 编程艺术》(javaScript循序渐进01)
 category: 技术
-tags: 前端开发
+tags: JavaScript
 keywords:
 description:
 ---
