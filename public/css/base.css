@@ -100,7 +100,7 @@ body, html {
   }
 }
 .aside-visiable{
-  display: block;
+  display: block !important;
 }
 .aside3-show{
   width: calc(100% - 340px) !important;
@@ -121,7 +121,7 @@ body, html {
   line-height: 2.0;
 }
 @media screen and (max-width: 1200px) {
-  .aside3-content {padding: 0 10px}
+  .aside3-content {padding: 0 30px}
 }
 
 .btn-pink{
