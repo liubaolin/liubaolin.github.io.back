@@ -2,7 +2,7 @@
 layout: post
 title: IDEA创建maven 一直loading archetype list
 category: 技术
-tags: IDE
+tags: 工具
 keywords: intellij
 description:
 ---
